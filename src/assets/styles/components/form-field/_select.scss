@@ -1,0 +1,225 @@
+.form-field .select {
+  position: relative;
+  display: flex;
+  align-items: center;
+  outline: none;
+  border-radius: 8px;
+  border: $inputBorder;
+  padding: 13px 24px;
+  padding-right: 0;
+  height: 50px;
+  background: color(clear-white);
+  transition: color 0.2s, background 0.2s;
+  transition-timing-function: ease;
+
+  &-submit {
+    display: block;
+    margin: 20px 24px 20px auto !important;
+    width: max-content;
+    max-width: 100%;
+    background: purple;
+  }
+
+  &.withContextMenu {
+    border: 0;
+    padding: 0 6px;
+    width: 30px;
+    background: transparent;
+
+    ._menu-selector {
+      display: flex;
+      align-items: center;
+      margin: auto;
+    }
+
+    .form-field-title {
+      margin-right: 10px;
+      max-width: unset;
+      text-overflow: unset;
+    }
+
+    .select-box {
+      padding-right: 0;
+    }
+
+    .select-pop {
+      top: 40px;
+      right: 0;
+      min-width: 232px;
+    }
+
+    &:hover {
+
+      border: unset;
+
+    }
+  }
+
+  .down-icon {
+    display: block;
+    padding-left: 20px;
+  }
+
+  &:hover,
+  &:focus {
+    border: $inputBorder;
+  }
+
+  &-box {
+    display: flex;
+    justify-content: space-between;
+    padding-right: 10px;
+    width: 100%;
+    height: 100%;
+
+    p {
+      max-width: calc(100% - 20px);
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+
+    i {
+      align-self: center;
+    }
+
+    img,
+    svg {
+      max-width: 40px;
+      max-height: 40px;
+      object-fit: cover;
+    }
+  }
+
+  &-pop {
+    z-index: 1;
+    position: absolute;
+    top: 16px;
+    margin-top: 10px;
+    border: 1px solid rgba(84, 95, 125, 0.04);
+    box-shadow: 3px 5px 20px rgba(0, 0, 0, 0.04);
+    border-radius: 4px;
+    padding: 0;
+    width: 100%;
+    max-height: 400px;
+    overflow-y: auto;
+    background: white;
+
+    &-search {
+      position: sticky;
+      top: 0;
+      padding: 28px 15px 9px;
+      background: white;
+    }
+
+    ul {
+      width: 100%;
+      list-style: none;
+    }
+
+    li {
+      padding: 10px 20px;
+      min-width: 100%;
+      cursor: pointer;
+      transition: color 0.2s, background 0.2s;
+      transition-timing-function: ease;
+
+      .form-field-li-div {
+        display: flex;
+        align-items: center;
+        width: 100%;
+      }
+
+      .labelled-checkbox {
+        z-index: 0;
+      }
+
+    }
+
+    i {
+      margin-top: 2px;
+      margin-right: 13px;
+      font-size: 18px;
+    }
+
+    li:hover {
+      color: color(primary);
+    }
+
+    img,
+    svg {
+      max-width: 40px;
+      max-height: 40px;
+    }
+  }
+
+  .form-input {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+  }
+
+  &-category {
+    flex-direction: column;
+    margin: 10px 0 !important;
+    padding: 0 !important;
+
+    &-li {
+      padding-bottom: 0 !important;
+    }
+
+    &-item {
+      border-bottom: 1px solid rgb(0 0 0 / 5%);
+      padding: 8px 0;
+
+      &:last-child {
+        border-bottom: 0;
+        padding-bottom: 0;
+      }
+
+    }
+
+    .view-formatter-title-box p {
+      margin-bottom: 0;
+    }
+
+    .collapsible-icon {
+      top: 5px !important;
+      width: 10px !important;
+    }
+
+    &.collapsible-show > .view-formatter-span {
+      padding-top: 10px;
+      width: 100%;
+    }
+
+  }
+
+}
+
+.select {
+
+  &.select-button {
+    border-radius: 6px;
+    max-width: 130px;
+    height: 41px;
+
+    .form-field-placeholder {
+      color: color(secondary);
+    }
+
+    .select-pop {
+      top: 37px;
+      right: -10px;
+      width: max-content;
+
+      li {
+        white-space: nowrap;
+      }
+
+    }
+
+  }
+
+}

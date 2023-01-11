@@ -1,0 +1,47 @@
+.item-type-toggle {
+
+  @include media-query(mobile) {
+
+    overflow-x: scroll;
+
+  }
+
+  display: flex;
+  justify-content: space-between;
+
+  p {
+    @include media-query(mobile) {
+      min-width: max-content;
+    }
+    @media only screen and (max-width: 300px) {
+      font-size: 4vw;
+    }
+    @include font-size(regular);
+
+    position: relative;
+    border-bottom: 1px solid transparent;
+    padding: 10px;
+    min-width: 90px;
+    text-align: left;
+    color: color(primary);
+    font-family: $alt-font;
+
+    &:not(:first-child) {
+      padding-left: 20px;
+    }
+
+    &.active {
+      color: color(tertiary);
+      font-family: $main-font;
+
+      &::after {
+        position: absolute;
+        bottom: -1.69px;
+        display: block;
+        border-bottom: 2px solid color(tertiary);
+        width: 100%;
+        content: '';
+      }
+    }
+  }
+}

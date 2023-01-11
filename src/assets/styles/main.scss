@@ -1,0 +1,37 @@
+//1. Variables & mixins
+@import 'abstracts/variables';
+@import 'abstracts/mixins';
+
+//2. Configurations and helpers
+@import 'abstracts/functions';
+@import 'abstracts/extends';
+
+//3. Base
+@import 'base/base';
+
+//4. Transition
+@import 'transitions/fadeIn';
+@import 'transitions/content-loader';
+
+//6. Vendors
+@import "vendors/lite-picker";
+
+//5. Components
+@import "components/button";
+@import "components/component-filter";
+@import "components/component-header";
+@import "components/empty-history";
+@import "components/form-field/date";
+@import "components/date-filter";
+@import "components/form-field/index";
+@import "components/form-field/select";
+@import "components/item-type-toggle";
+@import "components/summary-card";
+@import "components/view-formatter";
+
+//6. Layout
+@import "layout/LandingLayout";
+@import "layout/mainLayout";
+
+//7. Pages
+@import "pages/customers";

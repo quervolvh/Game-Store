@@ -1,0 +1,69 @@
+// -----------------------------------------------------------------------------
+// This file contains very basic styles.
+// -----------------------------------------------------------------------------
+
+*,
+*::after,
+*::before {
+  box-sizing: inherit;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: 62.5%;
+  min-height: 100vh;
+  font-family: $main-font;
+}
+
+body {
+  @include font-size(regular);
+  box-sizing: border-box;
+  min-height: 100vh;
+  overflow-x: hidden;
+  line-height: 1.4;
+  font-family: $main-font;
+  font-weight: 400;
+  background: color(background);
+  color: color(clear-white);
+}
+
+#__next {
+  min-height: 100vh;
+}
+
+h1 {
+  @include font-size(x-large);
+  font-weight: 500;
+}
+
+h2 {
+  @include font-size(large);
+  font-weight: 500;
+}
+
+* {
+  line-height: inherit;
+  font-size: inherit;
+  font-weight: inherit;
+}
+
+a {
+  @include font-size(regular);
+  text-decoration: none;
+  color: unset;
+}
+
+[role='button'] {
+  cursor: pointer;
+}
+
+input {
+  -webkit-appearance: none;
+}
+
+.ml-2 {
+
+  margin-left: 5px;
+
+}

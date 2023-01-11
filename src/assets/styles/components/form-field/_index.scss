@@ -1,0 +1,97 @@
+.form-field {
+  @extend .strickFadeIn;
+  position: relative;
+  margin-bottom: 24px;
+
+  &.title-left {
+    .form-field-title {
+      text-align: left;
+    }
+  }
+
+  p,
+  &-title {
+    @include font-size(small);
+    margin: 10px 0;
+    font-weight: 400;
+  }
+
+  input {
+    @include font-size(small);
+    outline: none;
+    border-radius: 5px;
+    border: $inputBorder;
+    padding: 17.5px 16px;
+    width: 100%;
+    height: 52.5px;
+    resize: none;
+    background: color(input-border);
+    color: transparentize( color(clear-white) , 0.5);
+    line-height: 1.8;
+    font-family: $aux-font;
+    transition: color 0.2s, background 0.2s;
+    transition-timing-function: ease;
+
+    &:read-only {
+      background-color: lighten(color(secondary), 65);
+    }
+
+    &:focus {
+      border: $inputBorder;
+    }
+  }
+
+  &.with-password input {
+    padding-right: 52px;
+  }
+
+  ::placeholder,
+  &-placeholder {
+    @extend %form-placeholder;
+  }
+
+  &-error {
+    display: flex;
+    align-items: center;
+    padding: 0;
+    max-height: 0 !important;
+    overflow: hidden;
+    color: color(error-item);
+    transition: 0.2s ease;
+
+    span {
+      display: none;
+    }
+
+    &-v {
+      padding-top: 20px;
+      max-height: 100px;
+      overflow: unset;
+
+      span {
+        display: block;
+      }
+    }
+
+  }
+
+  &-blank {
+    input {
+      @include media-query(mobile) {
+        text-align: center;
+      }
+
+      @include font-size(medium);
+      background: transparent !important;
+      color: color(secondary);
+    }
+  }
+}
+
+.form-field-placeholder span {
+  @include font-size(small);
+  width: 100%;
+  text-align: left;
+  font-weight: 300;
+  color: color(secondary);
+}

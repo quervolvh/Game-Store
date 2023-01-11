@@ -1,0 +1,88 @@
+.component-header {
+
+    &-back-button {
+
+        display: flex;
+        margin-bottom: 15px;
+
+        svg {
+
+            margin-right: 14px;
+
+        }
+
+    }
+
+    &-process-buttons {
+
+        @include media-query(mobile) {
+
+            flex-wrap: wrap;
+            margin-top: 20px;
+            width: 100%;
+
+        }
+
+        display: flex;
+
+        .button span {
+
+            white-space: nowrap;
+
+        }
+
+        .button {
+
+            @include media-query(mobile) {
+
+                width: 48%;
+                font-size: 80%;
+          
+              }
+
+              @include media-query(extreme-mobile) {
+
+                width: 100%;
+
+              }
+
+            border-color: color(tertiary);
+            color: color(tertiary);
+
+            &:first-child {
+
+                @include media-query(mobile) {
+
+                    margin-right: 4%;
+
+                }
+
+                @include media-query(extreme-mobile) {
+
+                    margin-right: 0;
+                    margin-bottom: 10px;
+
+                }
+
+                margin-right: 20px;
+                color: color(status-blacklisted);
+                border-color: color(status-blacklisted);
+
+            }
+
+            span {
+
+                @include media-query(mobile) {
+
+                    text-overflow: ellipsis;
+                    white-space: pre-wrap;
+
+                }
+
+            }
+
+        }
+
+    }
+
+}

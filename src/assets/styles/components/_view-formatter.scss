@@ -1,0 +1,43 @@
+.view-formatter {
+
+    &-label {
+
+        @include font-size(x-small);
+        margin-top: 8px;
+        color: color(secondary);
+        font-weight: 300;
+
+    }
+
+    &-value {
+
+        @include font-size(regular);
+        color: color(secondary);
+
+    }
+
+    &-loader {
+
+        .view-formatter-value {
+
+            @extend .content-loader;
+            margin: 0;
+            height: 13px;
+            width: 70%;
+            max-width: 100px;
+
+        }
+
+        &-label .view-formatter-label {
+
+            @extend .content-loader;
+            margin: 0;
+            height: 13px;
+            width: 10vw;
+            max-width: 100px;
+
+        }
+
+    }
+
+}

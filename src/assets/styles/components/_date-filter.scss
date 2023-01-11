@@ -1,0 +1,51 @@
+.date-filter {
+  @include media-query(mobile) {
+    width: unset;
+  }
+  position: relative;
+  display: flex;
+  align-items: center;
+  width: max-content;
+
+  &-box {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 11px;
+  }
+
+  &-full {
+    width: 100%;
+
+    .date-filter-context {
+      width: 100%;
+    }
+  }
+
+  &-with-halves {
+    width: 100%;
+
+    .date-filter {
+      display: block;
+      width: 47%;
+    }
+
+  }
+
+  &-selector {
+    position: absolute;
+    top: 0;
+    right: 0;
+    margin-top: 30px;
+  }
+
+  &-context {
+    svg {
+      vertical-align: top;
+    }
+  }
+
+  &-hidden {
+    display: none;
+  }
+
+}

@@ -1,0 +1,7 @@
+@font-face {
+    text-rendering: optimizeLegibility;
+    font-family: 'sfc-compact';
+    font-weight: 400;
+    font-style: normal;
+    src: url('./SF-Compact-Text-Regular.otf');
+}

@@ -1,0 +1,152 @@
+.component-filter {
+
+  .form-field {
+    margin-bottom: 0;
+  }
+
+  .filter-box {
+    display: flex;
+    align-items: center;
+
+    &-select-buttons {
+      display: flex;
+      margin: 30px 24px 30px auto;
+      padding: 0 13px;
+      width: 100%;
+
+      .button {
+
+        @include font-size(small);
+        margin: auto;
+        width: 45%;
+        font-weight: 400;
+
+      }
+
+    }
+
+    .litepicker .container__months {
+      border-radius: 0;
+      border: 1px solid color(primary);
+      padding: 0;
+    }
+
+    .litepicker .container__months .month-item-header {
+      padding-top: 5px;
+    }
+
+    .litepicker .container__days {
+      margin-bottom: 10px;
+    }
+
+    .date-filter-selector {
+      top: 25px;
+      width: 100%;
+    }
+
+    .date-filter-selector .date-filter-selector:first-child {
+      left: 0 !important;
+    }
+
+    .date-filter-with-halves .date-filter:not(:first-child) > .date-filter-selector {
+      // background: red;
+      left: -115%;
+    }
+
+    &-selector {
+      // @extend .SlideDown;
+      right: -130px;
+      display: none;
+      width: 320px !important;
+      max-height: unset !important;
+      overflow: visible !important;
+
+      &.visible {
+        // @extend .fadeIn;
+        display: block;
+      }
+
+      .select-pop {
+
+        left: 0;
+
+        li {
+          padding-top: 0;
+        }
+      }
+    }
+
+    .filter-box-selector {
+
+      @include media-query(mobile) {
+
+        position: fixed;
+        top: 64px;
+        left: 12px !important;
+        right: unset !important;
+        margin-right: auto;
+        margin-left: auto;
+
+      }
+      
+      @include media-query(real-mobile) {
+        right: 0;
+        margin-top: 26px;
+        min-width: 167px;
+        width: 94vw !important;
+      }
+
+      overflow: scroll !important;
+      right: 0;
+      left: 0;
+      border: 1px solid rgba(84, 95, 125, 0.14);
+      box-shadow: 3px 5px 20px rgba(0, 0, 0, 0.04);
+      border-radius: 4px;
+    }
+
+    &-button {
+      
+      display: flex;
+      border: 0;
+      padding: 0 20px !important;
+
+    }
+
+    .form-field .select {
+      height: unset;
+      min-height: 50px;
+    }
+
+    .form-field input {
+
+      border-radius: 8px;
+
+    }
+
+    .form-field .select-pop {
+
+      min-width: 230px;
+      max-width: 234px;
+      max-height: unset;
+      white-space: nowrap;
+
+      li {
+        border-bottom: 1px solid transparentize(color(primary), 0.6);
+        padding: 10px 18px;
+      }
+    }
+
+    &-active {
+      span {
+        margin-left: 0;
+      }
+    }
+
+    ul {
+
+      padding: 20px 0 0;
+
+    }
+
+  }
+}

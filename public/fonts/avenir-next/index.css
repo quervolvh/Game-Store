@@ -1,0 +1,32 @@
+@font-face {
+  text-rendering: optimizeLegibility;
+  font-family: 'avenir-next';
+  font-weight: 300;
+  font-style: normal;
+  src: url('./AvenirNextLTPro-Regular.otf');
+}
+
+@font-face {
+  text-rendering: optimizeLegibility;
+  font-family: 'avenir-next';
+  font-weight: 400;
+  font-style: normal;
+  src: url('./AvenirNextLTPro-Regular.otf');
+}
+
+@font-face {
+  text-rendering: optimizeLegibility;
+  font-family: 'avenir-next';
+  font-weight: 600;
+  font-style: normal;
+  src: url('./AvenirNext-DemiBold.ttf');
+}
+
+
+@font-face {
+  text-rendering: optimizeLegibility;
+  font-family: 'avenir-next';
+  font-weight: 700;
+  font-style: normal;
+  src: url('./AvenirNextLTPro-Bold.otf');
+}

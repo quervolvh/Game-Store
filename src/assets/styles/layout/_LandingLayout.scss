@@ -1,0 +1,143 @@
+.LandingLayout {
+
+    @extend %body-width-and-padding;
+
+    &-header-mobile {
+        z-index: 1;
+        position: fixed;
+        top: 0;
+        width: 100%;
+        background: white;
+
+        &-exp {
+          @include media-query(tablet) {
+            width: 50%;
+          }
+          position: fixed;
+          top: 0;
+          right: -100%;
+          width: 100%;
+          height: 100%;
+          background: white;
+          transition: 0.5s ease;
+
+          &.expanded {
+            right: 0;
+          }
+        }
+
+        img {
+          width: 70px;
+        }
+
+        &-top {
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          box-shadow: 0 4px 7px rgba(0, 0, 0, 0.05);
+          padding: 25px 25px 17px;
+
+          i {
+            font-size: 20px;
+            color: color(primary);
+          }
+        }
+
+        &-actions {
+          display: flex;
+          justify-content: space-between;
+          margin-bottom: 40px;
+        }
+
+        &-bottom {
+          z-index: -1;
+          padding: 24px;
+
+          .button {
+            @include font-size(medium);
+            margin-bottom: 0;
+            padding-top: 21px;
+            padding-bottom: 21px;
+            width: 48%;
+          }
+        }
+
+        &-links a {
+          @include font-size(medium);
+          display: block;
+          margin-bottom: 32px;
+        }
+
+        .form-field {
+          padding-bottom: 35px !important;
+
+          .select {
+            height: unset !important;
+          }
+
+          .withContextMenu {
+            @include media-query(mobile) {
+              width: 100% !important;
+            }
+            flex-direction: column;
+            padding: 0 !important;
+
+            .select-box-context {
+              margin: auto;
+            }
+          }
+
+          .select-pop {
+            @include media-query(mobile) {
+              box-shadow: 0 0 0 0 #ffffff;
+              border-radius: 0;
+              width: calc(100% + 48px) !important;
+              min-width: unset !important;
+              background: transparentize(color(clear-white), 0.8);
+            }
+            position: unset;
+          }
+
+          .select-pop a {
+            margin-bottom: unset;
+          }
+
+          ._menu-selector {
+            align-items: flex-start !important;
+    
+            p {
+              @include font-size(medium);
+              margin: 0;
+            }
+          }
+        }
+      }
+
+      &-header,
+      &-header-mobile {
+        .form-field {
+          margin-bottom: 0;
+
+          .select-pop {
+            top: 50px !important;
+            left: 0 !important;
+          }
+
+          li {
+            padding: 0 !important;
+            width: 100%;
+          }
+
+          a {
+            margin-right: 0;
+            padding: 15px;
+            width: 100%;
+          }
+
+          p {
+            @include font-size(regular);
+          }
+        }
+      }
+
+}

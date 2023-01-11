@@ -1,0 +1,39 @@
+@font-face {
+  text-rendering: optimizeLegibility;
+  font-family: 'work-sans';
+  font-weight: 300;
+  font-style: normal;
+  src: url('./WorkSans-Light.ttf') format('truetype');
+}
+
+@font-face {
+  text-rendering: optimizeLegibility;
+  font-family: 'work-sans';
+  font-weight: 400;
+  font-style: normal;
+  src: url('./WorkSans-Regular.ttf') format('truetype');
+}
+
+@font-face {
+  text-rendering: optimizeLegibility;
+  font-family: 'work-sans';
+  font-weight: 500;
+  font-style: normal;
+  src: url('./WorkSans-Medium.ttf') format('truetype');
+}
+  
+@font-face {
+  text-rendering: optimizeLegibility;
+  font-family: 'work-sans';
+  font-weight: 600;
+  font-style: normal;
+  src: url('./WorkSans-Bold.ttf') format('truetype');
+}
+
+@font-face {
+  text-rendering: optimizeLegibility;
+  font-family: 'work-sans';
+  font-weight: 700;
+  font-style: normal;
+  src: url('./WorkSans-ExtraBold.ttf') format('truetype');
+}

@@ -1,0 +1,82 @@
+:root {
+  --primary-color: #213F7D;
+}
+
+$colors: (
+  primary: #213F7D,
+  secondary:  rgba(255, 255, 255, 0.5),
+  tertiary: #CBCBCB,
+  clear-white: #fff,
+  error-item: #f36b7f,
+  input-border: rgba(95, 95, 95, 0.35),
+  background: #242424,
+  card-bg: #DF18FF,
+  status-pending: #E9B200,
+  status-blacklisted: #E4033B,
+  status-active: #39CD62,
+  sideNav-color: rgba(45, 45, 45, 1),
+  button-color: #8A8A8A
+
+);
+
+$card-shadow: 3px 0px 20px rgba(0, 0, 0, 0.04);
+
+$main-font: 'work-sans', sans-serif;
+$aux-font: 'avenir-next', sans-serif;
+$alt-font: 'avenir-next', sans-serif;
+
+$default-font-size: 14px;
+
+$inputBorder: 0 solid map-get($colors , input-border);
+
+$normal-font-sizes: (
+  xx-small: 9px,
+  x-small: 12px,
+  small: 14px,
+  regular: 16px,
+  medium: 18px,
+  large: 20px,
+  m-large: 22px,
+  n-large: 24px,
+  x-large: 35px,
+  xx-large: 40px,
+  xxx-large: 50px
+);
+
+$small-font-sizes: (
+  xx-small: 8px,
+  x-small: 10px,
+  small: 12.5px,
+  regular: 14px,
+  medium: 16px,
+  large: 18px,
+  m-large: 20px,
+  n-large: 22px,
+  x-large: 29.5px,
+  xx-large: 32px,
+  xxx-large: 40px
+);
+
+$small-tab-font-sizes: (
+  xx-small: 7px,
+  x-small: 9px,
+  small: 11px,
+  regular: 12.5px,
+  medium: 14px,
+  large: 16px,
+  m-large: 18px,
+  n-large: 20px,
+  x-large: 24px,
+  xx-large: 30px,
+  xxx-large: 37px
+);
+
+$font-weights: (
+  extra-light: 200,
+  light: 300,
+  regular: 400,
+  medium: 500,
+  semi-bold: 600,
+  bold: 700,
+  black: 900
+);

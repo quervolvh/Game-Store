@@ -14,7 +14,7 @@ export const Button: React.FC<ButtonProps> = ({
   const ButtonTitle = () => {
     return (
       <>
-        {(!vectorIcon && label) &&
+        {(label) &&
 
           <span className={classnames("button-title")}>
             <span className={color || ""}> {label || "button"} </span>

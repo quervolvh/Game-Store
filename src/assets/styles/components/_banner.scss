@@ -1,0 +1,83 @@
+.banner {
+
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+    margin-bottom: 55px;
+    border-radius: 16px;
+    background: linear-gradient(180deg, rgba(161, 0, 237, 0.27) 0%, #DA00FE 100%);
+
+    &-labels {
+
+        padding: 32px 52px;
+        max-width: 500px;
+
+    }
+
+    &-big-text {
+
+        @include font-size(xxx-large);
+
+    }
+
+    &-small-text {
+
+        @include font-size(small);
+        margin: 17px 0;
+        max-width: 300px;
+
+    }
+
+    button {
+
+        display: flex;
+        flex-direction: row-reverse;
+        align-items: center;
+        justify-content: center;
+        width: 206px;
+        background: color(clear-white);
+
+        .button-title {
+
+            font-weight: 300;
+            margin-left: 9px;
+            color: color(light-purple);
+
+        }
+
+    }
+
+    &-dots {
+
+        position: absolute;
+        bottom: 0;
+        display: flex;
+        justify-content: center;
+        padding-bottom: 20px;
+        width: 100%;
+
+        span {
+
+            border-radius: 100%;
+            width: 12px;
+            height: 12px;
+            background: color(light-grey);
+
+            &:not(:last-child) {
+
+                margin-right: 12px;
+
+            }
+
+            &.active {
+
+                background: color(dark-purple) !important;
+    
+            }
+
+        }
+
+    }
+
+}

@@ -1,9 +1,13 @@
 import React, { useState } from "react";
 import { MainLayout } from "layout/MainLayout";
 import { useFetching } from "hooks/useFetching";
-import { customerType } from "types";
+import { itemBlock } from "types";
 import { Banner } from "common/Banner";
-import { ItemTypeToggle } from "components";
+import { ViewToggle } from "common/ViewToggle";
+import { ItemsPlaceHolder } from "common/Item/PlaceHolder";
+import { Item } from "common/Item";
+import { Pagination } from "components";
+import { change } from "utils";
 
 export const Customers: React.FC<Props> = ({ isMobile, deviceWidth }) => {
 
@@ -11,27 +15,70 @@ export const Customers: React.FC<Props> = ({ isMobile, deviceWidth }) => {
 
     loading: boolean,
 
-    data: customerType[],
+    data: itemBlock,
 
-    error: boolean
+    page: number,
+
+    perPage: number,
+
+    error: boolean,
+
+    focus: string
 
   }>({
 
     loading: true,
 
-    data: [],
+    data: {},
 
-    error: false
+    error: false,
+
+    page: 1,
+
+    perPage: 20,
+
+    focus: "gift-cards"
 
   });
+
+  const focusMatcher = (focus: string) => {
+
+    switch (focus) {
+
+      case "gift-cards":
+
+        return state?.data?.giftCardsRLD?.content || [];
+
+      case "e-commerce":
+
+        return state?.data?.ecommerce || [];
+
+      default:
+
+        return state?.data?.benefitsList || [];
+
+    }
+
+  }
 
   useFetching({
 
     dispatcher: () => (
 
-      fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/users`, { method: "GET" })
+      fetch(`https://api.chimoney.io/v0.2/info/assets?countryCode=NG&perPage=10`,
 
-        .then(item => item?.json())
+        {
+          method: "GET",
+
+          headers: {
+
+            'X-API-KEY': '5fa47041cf1bca32b11f72a3bac177bcbec210479c06821401b5e3501ca7e262'
+
+          }
+
+        }
+
+      ).then(item => item?.json())
 
         .catch(() => setState((prevState) => ({
 
@@ -44,7 +91,7 @@ export const Customers: React.FC<Props> = ({ isMobile, deviceWidth }) => {
         )
     ),
 
-    setter: (e) => setState((prevState) => ({ ...prevState, loading: false, data: e })),
+    setter: (e) => setState((prevState) => ({ ...prevState, loading: false, data: e?.data })),
 
     safeParams: []
 
@@ -63,36 +110,75 @@ export const Customers: React.FC<Props> = ({ isMobile, deviceWidth }) => {
 
         <Banner />
 
-        <h1> Product </h1>
+        <ViewToggle
 
-        <ItemTypeToggle 
-        
-        items={[
+          selected={state.focus}
 
-            {
+          onSelect={(e: "e-commerce" | "gift-cards" | "benefit") =>
 
-              label: "Top",
-              onClick: ()=> null,
-              active: true
+            setState((prevState) => ({ ...prevState, "focus": e })
 
-            },
+            )}
 
-            {
+        />
 
-              label: "Popular",
-              onClick: ()=> null,
+        <div className="strickFadeIn items-placeholder-block">
 
-            },
-            
-            {
+          {focusMatcher(state.focus)?.filter((_, index: number) => {
 
-              label: "Recommended",
-              onClick: ()=> null,
+            const itemsToDisplayStart = (state.page - 1) * state.perPage;
+
+            const lowerLimit = itemsToDisplayStart;
+
+            const upperLimit = (state.page) * state.perPage;
+
+            if (index >= lowerLimit && index < upperLimit) {
+
+              return true;
 
             }
 
-        ]}  
-        
+            return false;
+
+          }
+
+          )?.map((item) => <Item item={item} />)}
+
+        </div>
+
+        {state.loading && <ItemsPlaceHolder />}
+
+        <Pagination
+
+          isMobile={isMobile}
+
+          pages={(focusMatcher(state.focus)?.length || 0) / state.perPage}
+
+          page={state.page}
+
+          perPageSelector={true}
+
+          dataCount={focusMatcher(state.focus)?.length || 0}
+
+          onClick={(pageAndPerPage) =>
+
+            setState((prevState) => ({
+
+              ...prevState,
+
+              page: pageAndPerPage.page,
+
+              perPage: pageAndPerPage.perPage,
+
+            }))
+
+          }
+
+          empty={focusMatcher(state.focus)?.length === 0}
+
+        perPage={20}
+
+
         />
 
       </>

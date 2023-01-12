@@ -1,20 +1,80 @@
 .content-loader {
-  margin: 30px 14px;
-  border-radius: 5px;
+  border-radius: 16px;
   height: 45px;
-  background: linear-gradient(242.07deg, #2e2c3326 52.03%, #0807062e 73.09%);
+  background: linear-gradient(242.07deg, #c5bfd344 52.03%, #deb48a2e 73.09%);
   background-size: 400% 400%;
   animation-name: content-loader-anim;
   animation-duration: 3s;
   animation-iteration-count: infinite;
 
-  &-table {
-    margin: 0 20px 0 0;
-    height: 20px;
+}
+
+.item-placeholder {
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border-radius: 8px;
+  padding: 45px 39px 25px;
+  background: #323232;
+  max-width: 220px;
+
+  &-image {
+
+    @extend .content-loader;
+    width: 162px;
+    height: 120px !important;
+
+  }
+
+  &-content-title {
+
+    @extend .content-loader;
+    margin: 10px auto 5px;
+    width: 89px;
+    height: 19px !important;
+    
+  }
+
+  &-content-subtitle {
+
+    @extend .content-loader;
+    margin: 15px auto !important;
+    width: 49px;
+    height: 19px !important;
+    
   }
 
 }
 
+.items-placeholder-block {
+
+  display: flex;
+  flex-wrap: wrap;
+  margin-right: -2.5%;
+
+  .item-placeholder {
+
+    width: 22% !important;
+    max-width: 400px !important;
+    margin: 1.75%;
+
+    &:nth-child(4n + 1) {
+
+      margin-left: 0;
+
+    }
+
+    &:nth-child(4n) {
+
+      margin-right: 0;
+
+    }
+
+  }
+
+}
 
 @keyframes content-loader-anim {
   0% {

@@ -9,17 +9,23 @@ Features Implemented includes :
 
 - Retrieval of data from Chimoney Api ( benefits , ecommerce and giftcards )
 - Addition of items to the cart , cart page and complete checkout experience
+- Click on product to add view its detail, add to cart , add quantity or remove
+- Use of localstorage in retrieving cart item on reload
 
 Routes:
-- This is a single page applications, all routes are either on stamped onto a modal or the apps original landing page.
+- This is a single page applications, routes are either stamped onto modals or the default "/" route.
 
 Design Approach:
 - Approach used in implementing this was based on a rather minimalistic approach. 
 - All extra pages ( i.e, product, checkout , cart ) are referred to as modal pages to keep app simple.
 
+Limitations
+- Due to lack of productId and prices on some of the data referenced Chimoney Test Api, cart functionality is a little limited.
+
 Performance Improvement:
-- Performance improvement would be to neccessitate to the of presisted data, i,e , by using redux store to save the data.
+- Performance improvement would be to neccessitate the use of presisted data, i,e , by using redux store to save the data.
 - Pagination has already been implemented here so, it won't be necessary.
+- Addition of **productid** to benefits - list ( from backend / data-store ) to ensure each item is unique and can be referenced properly on the cart.
 
 ## To Get Started Locally
 

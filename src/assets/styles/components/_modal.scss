@@ -21,7 +21,21 @@
   background: color(background);
 
   &.large {
-    max-width: 1200px;
+    width: 950px !important;
+    max-width: 950px !important;
+
+    .modal-legend {
+
+      text-align: left;
+
+      p {
+
+        @include font-size-override(x-large);
+
+      }
+
+    }
+
   }
 
   &-bottom {
@@ -167,50 +181,6 @@
         padding-right: 20px;
         padding-left: 37px;
       }
-    }
-  }
-
-  &.auth-modal {
-    @include media-query(real-mobile) {
-      border-radius: 0;
-      min-width: 100vw;
-      max-width: unset;
-      min-height: 100vh;
-
-      .auth-sign-in {
-        min-width: unset;
-      }
-    }
-
-    @include media-query(pc-high-resolution) {
-      max-width: 443px;
-    }
-
-    position: relative;
-    margin: auto;
-    min-width: 400px;
-    max-width: 400px;
-
-    .modal-legend-subtitle {
-      @include media-query(mobile) {
-        max-width: 77%;
-      }
-
-      @media only screen and (max-width: 340px) {
-        max-width: 88%;
-      }
-
-      @media only screen and (max-width: 240px) {
-        max-width: unset;
-      }
-
-      margin-right: auto;
-      margin-left: auto;
-      max-width: 75%;
-    }
-
-    .modal-exit {
-      padding-top: 1px;
     }
   }
 

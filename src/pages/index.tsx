@@ -1,21 +1,34 @@
 import React, { useState } from "react";
 import { MainLayout } from "layout/MainLayout";
 import { useFetching } from "hooks/useFetching";
-import { cartFunctionType, itemBlock } from "types";
+import { cartFunctionType, productBlock } from "types";
 import { Banner } from "common/Banner";
 import { ViewToggle } from "common/ViewToggle";
 import { ItemsPlaceHolder } from "common/Item/PlaceHolder";
 import { Item } from "common/Item";
 import { Pagination } from "components";
-import { change } from "utils";
 
-export const Customers: React.FC<Props> = ({ isMobile, deviceWidth, cartFunctions, cart }) => {
+export const Customers: React.FC<Props> = ({
+
+  isMobile,
+
+  deviceWidth,
+
+  cartFunctions,
+
+  cart,
+
+  triggerCart,
+
+  setProducts
+
+}) => {
 
   const [state, setState] = useState<{
 
     loading: boolean,
 
-    data: itemBlock,
+    products: productBlock,
 
     page: number,
 
@@ -23,13 +36,13 @@ export const Customers: React.FC<Props> = ({ isMobile, deviceWidth, cartFunction
 
     error: boolean,
 
-    focus: string
+    focus: "giftCards" | "eCommerce" | "benefits" 
 
   }>({
 
     loading: true,
 
-    data: {},
+    products: {},
 
     error: false,
 
@@ -37,7 +50,7 @@ export const Customers: React.FC<Props> = ({ isMobile, deviceWidth, cartFunction
 
     perPage: 20,
 
-    focus: "gift-cards"
+    focus: "giftCards"
 
   });
 
@@ -45,17 +58,17 @@ export const Customers: React.FC<Props> = ({ isMobile, deviceWidth, cartFunction
 
     switch (focus) {
 
-      case "gift-cards":
+      case "giftCards":
 
-        return state?.data?.giftCardsRLD?.content || [];
+        return state?.products?.giftCards || [];
 
-      case "e-commerce":
+      case "eCommerce":
 
-        return state?.data?.ecommerce || [];
+        return state?.products?.eCommerce || [];
 
       default:
 
-        return state?.data?.benefitsList || [];
+        return state?.products?.benefits || [];
 
     }
 
@@ -91,7 +104,23 @@ export const Customers: React.FC<Props> = ({ isMobile, deviceWidth, cartFunction
         )
     ),
 
-    setter: (e) => setState((prevState) => ({ ...prevState, loading: false, data: e?.data })),
+    setter: (e: any ) => {
+
+      const productBlock = {
+        
+        giftCards : e?.data?.giftCardsRLD?.content,
+
+        eCommerce : e?.data?.ecommerce,
+
+        benefits : e?.data?.benefitsList
+
+      };
+
+      setProducts(productBlock);
+
+      setState((prevState) => ({ ...prevState, loading: false, products: productBlock }));
+
+    },
 
     safeParams: []
 
@@ -105,6 +134,8 @@ export const Customers: React.FC<Props> = ({ isMobile, deviceWidth, cartFunction
       deviceWidth={deviceWidth}
       active={""}
       cart={cart}
+      triggerCart={() => triggerCart()}
+
     >
 
       <>
@@ -115,7 +146,7 @@ export const Customers: React.FC<Props> = ({ isMobile, deviceWidth, cartFunction
 
           selected={state.focus}
 
-          onSelect={(e: "e-commerce" | "gift-cards" | "benefit") =>
+          onSelect={(e: "eCommerce" | "giftCards" | "benefits") =>
 
             setState((prevState) => ({ ...prevState, "focus": e })
 
@@ -148,6 +179,8 @@ export const Customers: React.FC<Props> = ({ isMobile, deviceWidth, cartFunction
               item={item}
 
               cart={cart}
+
+              extraInfo={{ index , focus: state.focus }}
 
               cartFunctions={cartFunctions}
 
@@ -210,6 +243,12 @@ interface Props {
 
   deviceWidth: number,
 
-  cartFunctions: cartFunctionType
+  cartFunctions: cartFunctionType,
+
+  triggerCart: () => void,
+
+  cart: { productId: string, count: number }[],
+
+  setProducts: (e : productBlock ) => void
 
 }

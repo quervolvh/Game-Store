@@ -1,0 +1,83 @@
+.checkout {
+
+    &-contact {
+
+        display: flex;
+        flex-direction: column;
+        flex-grow: 1;
+
+        &-next {
+
+            display: flex;
+            flex-grow: 1;
+            padding-top: 30px;
+
+            .button {
+
+                margin-top: auto;
+
+            }
+        }
+
+    }
+
+    &-delivery-method {
+
+        .view-formatter-wrapper-box {
+
+            margin-bottom: 20px;
+            border-radius: 3px;
+            border-bottom: 2px solid #2a2a2a;
+            padding-left: 0;
+            padding-right: 0;
+
+        }
+
+        .view-formatter-regular-title  {
+
+            @include font-size(large);
+            color: color(clear-white);
+
+        }
+
+        &-address {
+
+            margin-top: 50px;
+
+            h2 {
+
+                @include font-size(m-large);
+                margin-bottom: 20px;
+
+            }
+
+        }
+
+        &-date {
+
+            margin-top: 50px;
+
+            h2 {
+
+                @include font-size(m-large);
+                margin-bottom: 20px;
+
+            }
+
+            .item-type-toggle {
+
+                flex-wrap: wrap;
+
+                p {
+
+                    margin: 10px 5px;
+
+                }
+
+            }
+
+        }
+
+    } 
+
+}

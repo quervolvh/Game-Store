@@ -16,7 +16,8 @@
     font-weight: 400;
   }
 
-  input {
+  input,
+  textarea {
     @include font-size(small);
     outline: none;
     border-radius: 5px;
@@ -86,6 +87,13 @@
       color: color(secondary);
     }
   }
+
+  textarea {
+
+    height: 200px
+
+  }
+
 }
 
 .form-field-placeholder span {

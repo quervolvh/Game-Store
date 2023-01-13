@@ -2,7 +2,7 @@ import React from 'react';
 import { CartIcon, LinkWrapper, NotificationsIcon } from 'components';
 import { MainLayoutHeaderSearch } from './ManLayoutHeaderSearch';
 
-export const MainLayoutFullHeader: React.FC<Props> = ({ cart }) => {
+export const MainLayoutFullHeader: React.FC<Props> = ({ cart , triggerCart }) => {
 
   return (
     <div className="main-layout-full-header main-layout-topBar">
@@ -33,7 +33,7 @@ export const MainLayoutFullHeader: React.FC<Props> = ({ cart }) => {
 
         />
 
-        <div className='main-layout-topBar-right-cart'>
+        <div className='main-layout-topBar-right-cart' onClick={()=> triggerCart()}>
 
           <span
 
@@ -67,5 +67,6 @@ export const MainLayoutFullHeader: React.FC<Props> = ({ cart }) => {
 interface Props {
   avatar?: string,
   title?: string,
+  triggerCart: ()=> void,
   cart: { productId: string, count: number }[]
 }

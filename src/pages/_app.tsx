@@ -3,30 +3,52 @@ import 'assets/styles/main.scss';
 import { change, resizer } from 'utils';
 import type { AppProps } from 'next/app';
 import { SetClientAvailability } from 'hooks/useIsClient';
+import { productBlock } from 'types';
+import { Cart } from 'common/Cart';
 
 export default function App({ Component, pageProps }: AppProps) {
 
-  const [state, setState] = useState({
+  const [state, setState] = useState<{
+
+    isMobile: boolean,
+    deviceWidth: number,
+    showMobileView: boolean,
+    timeOutTrigger: number,
+    clientMode: boolean,
+    cart: { productId: string, count: number, index: number, focus: string }[],
+    products: productBlock,
+    cartTrigger: number
+
+  }>({
     isMobile: false,
     deviceWidth: 0,
     showMobileView: false,
     timeOutTrigger: 0,
-    clientMode: false
+    clientMode: false,
+    cart: [],
+    products: {},
+    cartTrigger: 0
   });
 
-  const { isMobile, deviceWidth, showMobileView, clientMode } = state;
+  const { isMobile, deviceWidth, showMobileView, clientMode, cartTrigger, cart, products } = state;
 
-  const [cart, setCart] = useState<{ productId: string, count: number }[]>([]);
+  const setCart = (newCart: { productId: string, count: number, index: number, focus: string }[]) =>
+
+    setState((prevState) => ({ ...prevState, cart: newCart }));
 
   const cartFunctions = {
 
-    addToCart: (productId: string) => setCart((prevState) => ([...prevState, { productId, count: 1 }])),
+    addToCart: (e: { productId: string, focus: "eCommerce" | "giftCards" | "benefits", index: number }) => {
 
-    removeItemFromCart: (productId: string) => setCart((prevState) => prevState.filter(item => item.productId !== productId)),
+      setCart([...state.cart, { productId: e.productId, count: 1, index: e.index, focus: e.focus }])
+
+    },
+
+    removeItemFromCart: ( e : { productId: string }) => setCart([...state.cart].filter(item => item.productId !== e.productId)),
 
     modifyCartItem: (productId: string, action: "increment" | "decrement") => {
 
-      const items = [...cart].map(item => (item.productId === productId) ?
+      const items = [...state.cart].map(item => (item.productId === productId) ?
 
         { ...item, count: item.count + (action === "increment" ? 1 : -1) }
 
@@ -114,21 +136,41 @@ export default function App({ Component, pageProps }: AppProps) {
 
   return (
 
-    <Component
+    <>
 
-      isMobile={showMobileView}
+      <Cart
 
-      deviceWidth={deviceWidth}
+        trigger={cartTrigger}
 
-      clientMode={clientMode}
+        products={products}
 
-      cartFunctions={cartFunctions}
+        cartFunctions={cartFunctions}
 
-      cart={cart}
+        cart={cart}
 
-      {...pageProps}
+      />
 
-    />
+      <Component
+
+        isMobile={showMobileView}
+
+        deviceWidth={deviceWidth}
+
+        clientMode={clientMode}
+
+        cartFunctions={cartFunctions}
+
+        cart={cart}
+
+        setProducts={(block: productBlock) => setState((prevState) => ({ ...prevState, products: block }))}
+
+        triggerCart={() => setState((prevState) => ({ ...prevState, cartTrigger: prevState.cartTrigger + 1 }))}
+
+        {...pageProps}
+
+      />
+
+    </>
 
   )
 

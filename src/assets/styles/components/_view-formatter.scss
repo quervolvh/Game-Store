@@ -1,43 +1,247 @@
 .view-formatter {
+  width: 100%;
 
-    &-label {
+  &-wrapper-box {
+    display: flex;
+    align-items: center;
+    border-radius: 10px;
+    padding: 15px;
+    transition: 0.2s ease;
 
-        @include font-size(x-small);
-        margin-top: 8px;
-        color: color(secondary);
-        font-weight: 300;
+    &-hide {
+
+      opacity: 0;
+      transition: 0.5s !important;
 
     }
 
-    &-value {
+    &.icon-align > .view-formatter-left-icon {
+      margin-top: auto;
+      margin-bottom: auto;
+    }
 
+    &.settings-item {
+      @include media-query(mobile) {
+        margin-bottom: 23px;
+      }
+
+      margin: 0 0 20px;
+      border-radius: 5px;
+      padding: 0;
+      background: #f3f3f3;
+
+      path {
+        stroke: color(secondary);
+      }
+
+      svg {
+        width: 25%;
+      }
+    }
+
+    &.collapsible {
+      padding-top: 0;
+    }
+
+    &.classic {
+      padding: 0;
+    }
+
+    &.dual {
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0.0523656);
+
+      .view-formatter-left-icon > svg {
+        width: 100%;
+        max-width: 23px;
+        height: 100%;
+        max-height: 24px;
+      }
+
+      p {
+        margin: 0 !important;
+      }
+    }
+  }
+
+  &-title-box {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &-icon-holder {
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-right: 20px;
+
+    img {
+
+      margin: auto;
+
+    }
+
+  }
+
+  &-left-icon {
+
+    display: flex !important;
+    align-items: center;
+    justify-content: center;
+    border-radius: 100%;
+    width: 45px;
+    min-width: 45px;
+    height: 45px;
+    min-height: 45px;
+
+  }
+
+  span {
+    display: block;
+    transition: 0.4s ease-in-out max-height;
+  }
+
+  p {
+    @include font-size(medium);
+    margin-bottom: 5px;
+    color: color(secondary);
+  }
+
+  span p {
+    @include font-size(regular);
+    margin-top: 5px;
+    margin-bottom: 0;
+    color: color(secondary);
+  }
+
+
+  &.reverse {
+    display: flex;
+    flex-direction: column-reverse;
+  }
+
+  &.classic {
+    display: flex;
+    align-items: center;
+
+  }
+
+  &.settings-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 15.5px 15px;
+    cursor: pointer;
+
+    &.color-dark {
+      p {
+        color: color(secondary) !important;
+      }
+    }
+
+    &-flex {
+      @extend .settings-item;
+    }
+
+    &-flex > div:not(:first-of-type) {
+      display: none;
+    }
+
+    &-flex > div:first-of-type {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      width: 100%;
+
+      p {
         @include font-size(regular);
-        color: color(secondary);
+        color: color(secondary) !important;
 
+        &:first-child {
+          max-width: 30%;
+          overflow: hidden;
+          text-overflow: ellipsis;
+          white-space: nowrap;
+        }
+      }
     }
 
-    &-loader {
-
-        .view-formatter-value {
-
-            @extend .content-loader;
-            margin: 0;
-            height: 13px;
-            width: 70%;
-            max-width: 100px;
-
-        }
-
-        &-label .view-formatter-label {
-
-            @extend .content-loader;
-            margin: 0;
-            height: 13px;
-            width: 10vw;
-            max-width: 100px;
-
-        }
-
+    &-icon {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 0;
     }
 
+    svg {
+      width: 14px;
+      height: 14px;
+    }
+  }
+
+  &.collapsible {
+    position: relative;
+    // padding-top: 20px;
+    cursor: pointer;
+
+    .collapsible-icon {
+      position: absolute;
+      top: 20px;
+      right: 10px;
+      transition: 0.2s ease;
+
+      svg {
+        height: 15px;
+      }
+    }
+
+    &-show .collapsible-icon {
+      transform: rotate(0.25turn);
+    }
+
+    p:not(span p) {
+      margin-bottom: 20px;
+    }
+
+    p {
+      color: color(secondary);
+    }
+
+    &-show p:not(span p) {
+      color: color(secondary);
+    }
+
+    span {
+      max-height: 0;
+      overflow: hidden;
+    }
+
+    &-show span {
+      max-height: 1200px;
+    }
+  }
+
+  &-dual {
+    justify-content: unset !important;
+  }
+
+  &-text-box-flex {
+    display: flex;
+    align-items: center;
+
+    p {
+      margin-top: 0 !important;
+      margin-bottom: 0 !important;
+    }
+
+    p:first-child {
+      margin-right: 10px;
+    }
+  }
+
+  &-right-arrow svg {
+    width: 16px !important;
+    height: 16px !important;
+  }
 }

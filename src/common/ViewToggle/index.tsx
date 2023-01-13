@@ -16,15 +16,15 @@ export const ViewToggle: React.FC<Props> = ({ onSelect , selected }) => {
             {
 
               label: "Gift Cards",
-              onClick: ()=> onSelect("gift-cards"),
-              active: selected === "gift-cards"
+              onClick: ()=> onSelect("giftCards"),
+              active: selected === "giftCards"
 
             },
             
             {
 
               label: "Benefit List",
-              onClick: ()=> onSelect("benefit"),
+              onClick: ()=> onSelect("benefits"),
               active: selected === "benefit"
 
             },
@@ -32,8 +32,8 @@ export const ViewToggle: React.FC<Props> = ({ onSelect , selected }) => {
             {
 
                 label: "E-commerce",
-                onClick: ()=> onSelect("e-commerce"),
-                active: selected === "e-commerce"
+                onClick: ()=> onSelect("eCommerce"),
+                active: selected === "eCommerce"
   
               }
 
@@ -49,7 +49,7 @@ export const ViewToggle: React.FC<Props> = ({ onSelect , selected }) => {
 
 interface Props {
 
-    onSelect: (e: "e-commerce" | "gift-cards" | "benefit")=> void,
+    onSelect: (e: "eCommerce" | "giftCards" | "benefits")=> void,
 
     selected: string
 

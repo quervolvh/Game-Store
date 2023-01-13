@@ -4,7 +4,7 @@ import { cartFunctionType, cartType } from "types";
 import { numberFormat } from "utils";
 import { ItemView } from "./ItemView";
 
-export const Item: React.FC<Props> = ({ item, cartFunctions, cart }) => {
+export const Item: React.FC<Props> = ({ item, cartFunctions, cart , extraInfo }) => {
 
     const [trigger, setTrigger] = useState(0);
 
@@ -25,6 +25,8 @@ export const Item: React.FC<Props> = ({ item, cartFunctions, cart }) => {
                 cartFunctions={cartFunctions}
 
                 itemOnCart={itemOnCart}
+
+                extraInfo={extraInfo}
 
             />
 
@@ -62,7 +64,13 @@ export const Item: React.FC<Props> = ({ item, cartFunctions, cart }) => {
 
                         e.stopPropagation();
 
-                        cartFunctions?.[itemOnCart ? "removeItemFromCart" : "addToCart"]?.(item.productId || item.id);
+                        cartFunctions?.[itemOnCart ? "removeItemFromCart" : "addToCart"]?.({
+                            
+                            ...extraInfo,
+
+                            productId : item.productId || item.id,
+                            
+                        });
 
                     }}
 
@@ -88,6 +96,8 @@ interface Props {
 
     cartFunctions: cartFunctionType,
 
-    cart: cartType
+    cart: cartType,
+
+    extraInfo: { focus : "benefits" | "giftCards" | "eCommerce" , index: number }
 
 }

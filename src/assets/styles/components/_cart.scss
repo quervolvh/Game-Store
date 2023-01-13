@@ -29,4 +29,154 @@
         
     }
 
+    &-item {
+
+        display: flex;
+        align-items: center;
+        padding: 20px;
+        border: 1px solid rgba(4, 0, 0, 0.293);
+        border-left: 0;
+        border-right: 0;
+        border-radius: 10px;
+        border-bottom: 0;
+
+        &-image {
+
+            margin-right: 40px;
+            width: 120px;
+            height: 120px;
+
+            img {
+
+                object-fit: cover;
+                width: 100%;
+                height: 100%;
+
+            }
+
+        }
+
+        &-name {
+
+            @include font-size(large);
+            color: color(status-pending);
+
+        }
+
+        &-variant {
+
+            @include font-size(small);
+            
+            span {
+
+                color: color(status-blacklisted); 
+
+            }
+
+        }
+
+        &-ref {
+
+            color: color(tertiary);
+            @include font-size(x-small);
+            margin-top: 20px;
+
+        }
+
+        .cart-quantifier {
+
+            border: 0;
+
+            div {
+
+                border-radius: 8px;
+                padding: 23px 20px;
+
+            }
+
+            &-quantity {
+
+                border: 2px solid;
+                
+            }
+
+        }
+
+        &-price {
+
+            @include font-size(large);
+            min-width: 100px;
+            text-align: right;
+
+        }
+
+        &-body {
+
+            flex-grow: 1;
+
+        }
+
+    }
+
+    &-totals {
+
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-top: 50px;
+        padding-left: 20px;
+
+        h1 {
+
+            @include font-size(x-large);
+
+        }
+
+        h1:last-child {
+
+            @include font-size(xxx-large);
+            color: color(light-purple);
+
+        }
+
+    }
+
+    &-promo {
+        margin: 20px 0 20px 20px;
+
+        h1 {
+
+            @include font-size(n-large);
+
+        }
+
+
+        &-box {
+
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin: 15px 0;
+            border-radius: 8px;
+            padding: 25px 20px;
+            background: color(eager-grey);
+
+            span svg {
+
+                height: 40px;
+                width: 40px;
+
+            }
+
+        }
+
+        h2 {
+
+            @include font-size(large);
+            color: color(error-item);
+
+        }
+
+    }
+
 }

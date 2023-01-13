@@ -3,25 +3,11 @@ import { Button, Modal } from "components";
 import { cartFunctionType } from "types";
 import { ModifyItem } from "./ModifyItem";
 import { numberFormat } from "utils";
+import { getUsablePrice } from "utils/product";
 
-export const ItemView: React.FC<Props> = ({ item, trigger, cartFunctions, itemOnCart }) => {
+export const ItemView: React.FC<Props> = ({ item, trigger, cartFunctions, itemOnCart, extraInfo }) => {
 
     const [visibility, setVisibility] = useState(false);
-
-    const price = item.fixedRecipientDenominations;
-
-    const getUsablePrice = () => {
-
-        if ( price &&  Array.isArray(price) ) {
-
-            if ( Array.isArray(price) ) return price[0] || 0;
-
-
-        }
-
-       return 0;
-
-    }
 
     const toggleOut = () => setVisibility(false);
 
@@ -67,7 +53,7 @@ export const ItemView: React.FC<Props> = ({ item, trigger, cartFunctions, itemOn
 
                     />
 
-                    <p className="item-modal-cart-price"> Starts at : <span> {numberFormat(getUsablePrice())} </span> </p>
+                    <p className="item-modal-cart-price"> Starts at : <span> {numberFormat(getUsablePrice(item))} </span> </p>
 
                     {itemOnCart &&
 
@@ -93,7 +79,13 @@ export const ItemView: React.FC<Props> = ({ item, trigger, cartFunctions, itemOn
                             
                                 label="Add To Cart" 
                                 
-                                onClick={()=>  cartFunctions.addToCart(item.productId || item.id)}
+                                onClick={()=>  cartFunctions.addToCart({ 
+                                    
+                                    ...extraInfo ,  
+                                    
+                                    productId : item.productId || item.id
+                                
+                                })}
                                 
                             />
 
@@ -119,6 +111,8 @@ interface Props {
 
     cartFunctions: cartFunctionType,
 
-    itemOnCart?: { productId: string, count: number }
+    itemOnCart?: { productId: string, count: number },
+
+    extraInfo: { focus : "benefits" | "giftCards" | "eCommerce" , index: number }
 
 }

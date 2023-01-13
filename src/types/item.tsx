@@ -1,8 +1,6 @@
-export type itemBlock = {
+export type productBlock = {
 
-   giftCardsRLD?: {
-
-      content: {
+   giftCards?: {
 
          img: string,
          name: string,
@@ -10,18 +8,17 @@ export type itemBlock = {
          productName: string,
          fixedRecipientDenominations: number[]
 
-      }[]
+      }[],
 
-   },
-
-   benefitsList?: {
+   benefits?: {
 
       img: string,
       name: string,
+      productId: string
 
    }[],
 
-   ecommerce?: {
+   eCommerce?: {
 
       thumbnail: string,
       productId: string,

@@ -2,14 +2,16 @@ export * from "./item";
 export * from "./formFieldTypes";
 
 export type cartFunctionType = {
-    addToCart: (productId: string) => void;
-    removeItemFromCart: (productId: string) => void;
+    addToCart: (e: { productId: string, focus: "eCommerce" | "giftCards" | "benefits", index: number }) => void;
+    removeItemFromCart: (e: { productId: string }) => void;
     modifyCartItem: (productId: string, action: "increment" | "decrement") => void;
 };
 
 export type cartType = {
 
     productId: string,
-    count: number
+    count: number,
+    index: number,
+    focus: "giftCards" | "eCommerce" | "benefits"
 
 }[]

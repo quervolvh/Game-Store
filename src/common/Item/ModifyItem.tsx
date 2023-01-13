@@ -2,7 +2,7 @@ import React from "react";
 import { Button } from "components";
 import { cartFunctionType } from "types";
 
-export const ModifyItem: React.FC<Props> = ({ item, cartFunctions, itemOnCart , toggleOut }) => {
+export const ModifyItem: React.FC<Props> = ({ item, cartFunctions, itemOnCart, toggleOut, showButtons }) => {
 
     const price = item.fixedRecipientDenominations;
 
@@ -20,18 +20,18 @@ export const ModifyItem: React.FC<Props> = ({ item, cartFunctions, itemOnCart , 
 
                             className="cart-quantifier-button"
 
-                            onClick={() => { 
+                            onClick={() => {
 
-                                if ( itemOnCart.count === 1 ) {
+                                if (itemOnCart.count === 1) {
 
                                     cartFunctions.removeItemFromCart(item.productId || item.id);
 
                                     return;
 
                                 }
-                                
+
                                 cartFunctions.modifyCartItem((item.productId || item.id), "decrement")
-                            
+
                             }}
 
                         > -
@@ -50,29 +50,33 @@ export const ModifyItem: React.FC<Props> = ({ item, cartFunctions, itemOnCart , 
 
                     </div>
 
-                    <div className="item-modal-cart-buttons">
+                    {showButtons !== false &&
 
-                        <Button label={"Go to Cart"} />
+                        <div className="item-modal-cart-buttons">
 
-                        <div className="or">
+                            <Button label={"Go to Cart"} />
 
-                            <span />
+                            <div className="or">
 
-                            <p> or </p>
+                                <span />
 
-                            <span />
+                                <p> or </p>
+
+                                <span />
+
+                            </div>
+
+                            <Button
+
+                                label={"Continue Shopping"}
+
+                                onClick={() => toggleOut()}
+
+                            />
 
                         </div>
 
-                        <Button 
-                        
-                            label={"Continue Shopping"}
-                            
-                            onClick={()=> toggleOut()}
-                        
-                        />
-
-                    </div>
+                    }
 
                 </>
 
@@ -92,6 +96,8 @@ interface Props {
 
     itemOnCart?: { productId: string, count: number },
 
-    toggleOut(): void
+    toggleOut(): void,
+
+    showButtons?: boolean
 
 }

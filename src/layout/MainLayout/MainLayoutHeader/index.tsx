@@ -2,7 +2,21 @@ import React from 'react';
 import { MainLayoutFullHeader } from './MainLayoutFullHeader';
 import { MainLayoutMobileHeader } from './MainLayoutMobileHeader';
 
-export const MainLayoutHeader: React.FC<Props> = ({ isMobile, deviceWidth, active, title , cart }): JSX.Element => {
+export const MainLayoutHeader: React.FC<Props> = ({
+
+    isMobile,
+
+    deviceWidth,
+
+    active,
+
+    title,
+
+    triggerCart,
+
+    cart
+
+}): JSX.Element => {
 
     return (
         <>
@@ -15,6 +29,7 @@ export const MainLayoutHeader: React.FC<Props> = ({ isMobile, deviceWidth, activ
                 :
 
                 <MainLayoutFullHeader
+                    triggerCart={() => triggerCart()}
                     title={title}
                     cart={cart}
                 />
@@ -29,5 +44,6 @@ interface Props {
     deviceWidth: number,
     active: string,
     title?: string,
-    cart: { productId: string , count: number }[]
+    triggerCart: ()=> void,
+    cart: { productId: string, count: number }[]
 }

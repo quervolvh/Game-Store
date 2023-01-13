@@ -2,6 +2,7 @@ import React, { ReactElement } from 'react';
 import { PlainInput } from './PlainInput';
 import { OptionsInput } from './OptionInput';
 import { DateField } from './DateField';
+import { TextAreaInput } from './TextAreaInput';
 
 export const FormField: React.FC<Props> = (props) => {
 
@@ -22,6 +23,10 @@ export const FormField: React.FC<Props> = (props) => {
             RenderElement = DateField;
             break;
 
+        case 'text-area':
+            RenderElement = TextAreaInput;
+            break;
+
         default:
             RenderElement = PlainInput;
     }
@@ -32,7 +37,7 @@ export const FormField: React.FC<Props> = (props) => {
 };
 
 interface Props {
-    type?: 'plain' | 'password' | 'option' | 'date',
+    type?: 'plain' | 'password' | 'option' | 'date' | 'text-area',
     options?: any,
     noDropDownIcon?: boolean,
     label?: string,

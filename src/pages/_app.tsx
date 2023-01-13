@@ -15,7 +15,7 @@ export default function App({ Component, pageProps }: AppProps) {
     showMobileView: boolean,
     timeOutTrigger: number,
     clientMode: boolean,
-    cart: { productId: string, count: number, index: number, focus: string }[],
+    cart: { productId: string, count: number, index: number, focus: "giftCards" | "benefits" | "eCommerce" }[],
     products: productBlock,
     cartTrigger: number
 
@@ -32,7 +32,7 @@ export default function App({ Component, pageProps }: AppProps) {
 
   const { isMobile, deviceWidth, showMobileView, clientMode, cartTrigger, cart, products } = state;
 
-  const setCart = (newCart: { productId: string, count: number, index: number, focus: string }[]) =>
+  const setCart = (newCart: { productId: string, count: number, index: number, focus: any }[]) =>
 
     setState((prevState) => ({ ...prevState, cart: newCart }));
 

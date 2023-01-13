@@ -5,7 +5,7 @@ import { ModifyItem } from "./ModifyItem";
 import { numberFormat } from "utils";
 import { getUsablePrice } from "utils/product";
 
-export const ItemView: React.FC<Props> = ({ item, trigger, cartFunctions, itemOnCart, extraInfo }) => {
+export const ItemView: React.FC<Props> = ({ item, trigger, cartFunctions, itemOnCart, extraInfo , triggerCart }) => {
 
     const [visibility, setVisibility] = useState(false);
 
@@ -39,7 +39,7 @@ export const ItemView: React.FC<Props> = ({ item, trigger, cartFunctions, itemOn
 
                 toggleOut={() => toggleOut()}
 
-                title={item.productName || item?.name}
+                title={item?.productName || item?.name}
 
             >
 
@@ -67,6 +67,8 @@ export const ItemView: React.FC<Props> = ({ item, trigger, cartFunctions, itemOn
 
                             toggleOut={()=> toggleOut()}
 
+                            triggerCart={()=> triggerCart()}
+
                         />
 
                     }
@@ -83,7 +85,7 @@ export const ItemView: React.FC<Props> = ({ item, trigger, cartFunctions, itemOn
                                     
                                     ...extraInfo ,  
                                     
-                                    productId : item.productId || item.id
+                                    productId : item?.productId || item?.id
                                 
                                 })}
                                 
@@ -113,6 +115,8 @@ interface Props {
 
     itemOnCart?: { productId: string, count: number },
 
-    extraInfo: { focus : "benefits" | "giftCards" | "eCommerce" , index: number }
+    extraInfo: { focus : "benefits" | "giftCards" | "eCommerce" , index: number },
+
+    triggerCart: ()=> void
 
 }

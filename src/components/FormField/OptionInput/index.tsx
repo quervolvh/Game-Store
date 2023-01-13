@@ -8,7 +8,6 @@ import { change as setChange } from 'utils';
 import { OptionInputItem } from './OptionInputItem';
 import { generateOptionConsiderations, mapObjectKeysToLabels } from 'utils';
 import { objectOptionType } from 'types';
-import { ContextMenuIcon } from 'components/Assets';
 
 export const OptionsInput: React.FC<OptionsInputProp> = (
     {
@@ -285,7 +284,7 @@ export const OptionsInput: React.FC<OptionsInputProp> = (
 
                                     <div className="select-box-context">
 
-                                        <i dangerouslySetInnerHTML={{ __html : ContextMenuIcon }} />
+                                        <i dangerouslySetInnerHTML={{ __html : "<p></p>" }} />
 
                                     </div>
 

@@ -7,11 +7,13 @@ export type cartFunctionType = {
     modifyCartItem: (productId: string, action: "increment" | "decrement") => void;
 };
 
-export type cartType = {
+export type cartItemType = {
 
     productId: string,
     count: number,
     index: number,
     focus: "giftCards" | "eCommerce" | "benefits"
 
-}[]
+};
+
+export type cartType = cartItemType[];

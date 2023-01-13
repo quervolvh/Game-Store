@@ -10,12 +10,6 @@ export const CheckOut: React.FC<Props> = ({
 
     trigger,
 
-    products,
-
-    cart,
-
-    cartFunctions,
-
     toggleOut
 
 }) => {

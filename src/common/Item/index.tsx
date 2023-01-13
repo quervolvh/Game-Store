@@ -4,7 +4,7 @@ import { cartFunctionType, cartType } from "types";
 import { numberFormat } from "utils";
 import { ItemView } from "./ItemView";
 
-export const Item: React.FC<Props> = ({ item, cartFunctions, cart, extraInfo }) => {
+export const Item: React.FC<Props> = ({ item, cartFunctions, cart, extraInfo , triggerCart }) => {
 
     const [trigger, setTrigger] = useState(0);
 
@@ -33,6 +33,8 @@ export const Item: React.FC<Props> = ({ item, cartFunctions, cart, extraInfo }) 
                 itemOnCart={itemOnCart}
 
                 extraInfo={extraInfo}
+
+                triggerCart={()=> triggerCart()}
 
             />
 
@@ -108,6 +110,8 @@ interface Props {
 
     cart: cartType,
 
-    extraInfo: { focus: "benefits" | "giftCards" | "eCommerce", index: number }
+    extraInfo: { focus: "benefits" | "giftCards" | "eCommerce", index: number },
+
+    triggerCart: ()=> void
 
 }

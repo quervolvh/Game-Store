@@ -2,7 +2,21 @@ import React from "react";
 import { Button } from "components";
 import { cartFunctionType } from "types";
 
-export const ModifyItem: React.FC<Props> = ({ item, cartFunctions, itemOnCart, toggleOut, showButtons }) => {
+export const ModifyItem: React.FC<Props> = ({
+
+    item,
+
+    cartFunctions,
+
+    itemOnCart,
+
+    toggleOut,
+
+    showButtons,
+
+    triggerCart
+
+}) => {
 
     return (
 
@@ -52,7 +66,7 @@ export const ModifyItem: React.FC<Props> = ({ item, cartFunctions, itemOnCart, t
 
                         <div className="item-modal-cart-buttons">
 
-                            <Button label={"Go to Cart"} />
+                            <Button label={"Go to Cart"} onClick={()=> triggerCart()} />
 
                             <div className="or">
 
@@ -96,6 +110,8 @@ interface Props {
 
     toggleOut(): void,
 
-    showButtons?: boolean
+    showButtons?: boolean,
+
+    triggerCart: ()=> void
 
 }

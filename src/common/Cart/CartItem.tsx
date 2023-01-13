@@ -19,7 +19,7 @@ export const CartItem: React.FC<Props> = ({
         <>
 
 
-            <div className="cart-item" key={`cart-item-${item.productId || ""}-${item.focus}-${item.index}`}>
+            <div className="cart-item" key={`cart-item-${item.productId || ""}-${item?.focus}-${item.index}`}>
 
                 <div className="cart-item-image">
 
@@ -51,6 +51,8 @@ export const CartItem: React.FC<Props> = ({
 
                     cartFunctions={cartFunctions}
 
+                    triggerCart={()=> null}
+
                 />
 
                 <p className="cart-item-price">
@@ -76,6 +78,6 @@ interface Props {
 
     product: {[key:string] : any},
 
-    item: { count: number , index: number , productId: string }
+    item: { count: number , index: number , productId: string, focus: string }
 
 }

@@ -187,6 +187,8 @@ export const Customers: React.FC<Props> = ({
 
               key={`cart-item-${item.productId}-${index} `}
 
+              triggerCart={()=> triggerCart()}
+
             />
 
           )}

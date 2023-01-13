@@ -23,17 +23,17 @@ export const CartItem: React.FC<Props> = ({
 
                 <div className="cart-item-image">
 
-                    <img src={product.img} />
+                    <img src={product?.img} />
 
                 </div>
 
                 <div className="cart-item-body">
 
-                    <p className="cart-item-name"> {product.productName} </p>
+                    <p className="cart-item-name"> {product?.productName} </p>
 
                     <p className="cart-item-variant"> Variant : <span> Unavailable </span> </p>
 
-                    <p className="cart-item-ref"> Product code : <span> {product.productId || "no-ref"} </span> </p>
+                    <p className="cart-item-ref"> Product code : <span> {product?.productId || "no-ref"} </span> </p>
 
                     {/* <p> {item.count} </p> */}
 

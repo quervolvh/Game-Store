@@ -4,8 +4,6 @@ import { cartFunctionType } from "types";
 
 export const ModifyItem: React.FC<Props> = ({ item, cartFunctions, itemOnCart, toggleOut, showButtons }) => {
 
-    const price = item.fixedRecipientDenominations;
-
     return (
 
         <>
@@ -90,7 +88,7 @@ export const ModifyItem: React.FC<Props> = ({ item, cartFunctions, itemOnCart, t
 
 interface Props {
 
-    item?: { [key: string]: any },
+    item?: { [key: string]: any } | any,
 
     cartFunctions: cartFunctionType,
 

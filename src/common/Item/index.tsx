@@ -42,6 +42,10 @@ export const Item: React.FC<Props> = ({ item, cartFunctions, cart, extraInfo }) 
 
                 onClick={() => setTrigger((prevState) => (prevState + 1))}
 
+                role={"button"}
+
+                tabIndex={0}
+
             >
 
                 <div className="item-image">

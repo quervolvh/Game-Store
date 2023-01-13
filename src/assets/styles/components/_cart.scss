@@ -19,13 +19,20 @@
         justify-content: space-between;
         border-radius: 8px;
         border: 2px solid color(clear-white);
+        user-select: none;
+        -webkit-user-select: none; /*Safari*/
+        -moz-user-select: none; /*Firefox*/
         
         &-button {
 
             display: flex;
+            cursor: pointer;
             flex-grow: 1;
             justify-content: center;
             padding: 30px 20px;
+            user-select: none;
+            -webkit-user-select: none; /*Safari*/
+            -moz-user-select: none; /*Firefox*/
 
         }
 

@@ -88,21 +88,25 @@ export const Cart: React.FC<Props> = ({
 
             >
 
-                {cart?.length === 0 && <EmptyHistory subtitle="Nothing to see here yet! Please add an item to cart to continue" />}
+                <>
 
-                <CartBox
+                    {cart?.length === 0 && <EmptyHistory subtitle="Nothing to see here yet! Please add an item to cart to continue" />}
 
-                    products={products}
+                    <CartBox
 
-                    toggleOut={() => toggleOut()}
+                        products={products}
 
-                    cart={cart}
+                        toggleOut={() => toggleOut()}
 
-                    cartFunctions={cartFunctions}
+                        cart={cart}
 
-                    checkOutTrigger={checkOutTrigger}
+                        cartFunctions={cartFunctions}
 
-                />
+                        checkOutTrigger={checkOutTrigger}
+
+                    />
+
+                </>
 
             </Modal>
 

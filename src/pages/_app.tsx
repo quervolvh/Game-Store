@@ -40,21 +40,38 @@ export default function App({ Component, pageProps }: AppProps) {
 
     addToCart: (e: { productId: string, focus: "eCommerce" | "giftCards" | "benefits", index: number }) => {
 
-      setCart([...state.cart, { productId: e.productId, count: 1, index: e.index, focus: e.focus }])
+      const newEntry = { productId: e.productId, count: 1, index: e.index, focus: e.focus };
+
+      const appendedEntry = [...state.cart, newEntry];
+
+      localStorage.setItem("cart-man", JSON.stringify({ cart: appendedEntry }));
+
+      setCart(appendedEntry)
+
 
     },
 
-    removeItemFromCart: ( e : { productId: string }) => setCart([...state.cart].filter(item => item.productId !== e.productId)),
+    removeItemFromCart: (e: { productId: string }) => {
+
+      const newData = [...state.cart].filter(item => item?.productId !== e?.productId);
+
+      localStorage.setItem("cart-man", JSON.stringify({ cart: newData }));
+
+      setCart(newData);
+
+    },
 
     modifyCartItem: (productId: string, action: "increment" | "decrement") => {
 
-      const items = [...state.cart].map(item => (item.productId === productId) ?
+      const items = [...state.cart].map(item => (item?.productId === productId) ?
 
         { ...item, count: item.count + (action === "increment" ? 1 : -1) }
 
         : item
 
       );
+
+      localStorage.setItem("cart-man", JSON.stringify({ cart: items }));
 
       setCart(items);
 
@@ -131,6 +148,34 @@ export default function App({ Component, pageProps }: AppProps) {
 
     //eslint-disable-next-line
   }, [clientMode]);
+
+  useEffect(() => {
+
+    const getLocalStorageCart = () => {
+
+      const currentStoreItem = localStorage.getItem(`cart-man`)
+
+      if (currentStoreItem ) {
+
+        const item = JSON?.parse?.(currentStoreItem);
+
+        return item?.cart || [];
+
+      }
+
+      return [];
+
+    }
+
+    const cart = getLocalStorageCart();
+
+    if (cart) {
+
+      setCart(cart);
+
+    }
+
+  }, []);
 
   SetClientAvailability((e) => change(e, "clientMode", setState));
 

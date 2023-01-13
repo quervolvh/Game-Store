@@ -23,9 +23,9 @@
   transition-timing-function: ease;
 
   &.no-bg {
-    border: 1px solid color(primary);
+    border: 1px solid color(clear-white);
     background: transparent;
-    color: color(primary);
+    color: color(clear-white);
 
     &-dark {
       background: transparent;

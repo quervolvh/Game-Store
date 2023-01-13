@@ -7,6 +7,7 @@ import { ViewToggle } from "common/ViewToggle";
 import { ItemsPlaceHolder } from "common/Item/PlaceHolder";
 import { Item } from "common/Item";
 import { Pagination } from "components";
+import { EmptyHistory } from "components/EmptyHistory";
 
 export const Customers: React.FC<Props> = ({
 
@@ -36,7 +37,7 @@ export const Customers: React.FC<Props> = ({
 
     error: boolean,
 
-    focus: "giftCards" | "eCommerce" | "benefits" 
+    focus: "giftCards" | "eCommerce" | "benefits"
 
   }>({
 
@@ -104,15 +105,15 @@ export const Customers: React.FC<Props> = ({
         )
     ),
 
-    setter: (e: any ) => {
+    setter: (e: any) => {
 
       const productBlock = {
-        
-        giftCards : e?.data?.giftCardsRLD?.content,
 
-        eCommerce : e?.data?.ecommerce,
+        giftCards: e?.data?.giftCardsRLD?.content,
 
-        benefits : e?.data?.benefitsList
+        eCommerce: e?.data?.ecommerce,
+
+        benefits: e?.data?.benefitsList
 
       };
 
@@ -156,7 +157,7 @@ export const Customers: React.FC<Props> = ({
 
         <div className="strickFadeIn items-placeholder-block">
 
-          {focusMatcher(state.focus)?.filter((_, index: number) => {
+          {(focusMatcher(state.focus) as any)?.filter((_: unknown, index: number) => {
 
             const itemsToDisplayStart = (state.page - 1) * state.perPage;
 
@@ -172,15 +173,15 @@ export const Customers: React.FC<Props> = ({
 
             return false;
 
-          })?.map((item, index) =>
+          })?.map((item: any, index: number) =>
 
             <Item
 
               item={item}
 
-              cart={cart}
+              cart={cart as any}
 
-              extraInfo={{ index , focus: state.focus }}
+              extraInfo={{ index, focus: state.focus }}
 
               cartFunctions={cartFunctions}
 
@@ -193,6 +194,17 @@ export const Customers: React.FC<Props> = ({
         </div>
 
         {state.loading && <ItemsPlaceHolder />}
+
+        {!state.loading && focusMatcher(state.focus).length < 1 && 
+        
+          <EmptyHistory 
+
+          subtitle="Nothing to see here yet! Please select another filter or reload the page" 
+
+          />
+          
+          
+         }
 
         <Pagination
 
@@ -249,6 +261,6 @@ interface Props {
 
   cart: { productId: string, count: number }[],
 
-  setProducts: (e : productBlock ) => void
+  setProducts: (e: productBlock) => void
 
 }

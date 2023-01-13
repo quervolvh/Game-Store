@@ -25,7 +25,7 @@ export const ViewToggle: React.FC<Props> = ({ onSelect , selected }) => {
 
               label: "Benefit List",
               onClick: ()=> onSelect("benefits"),
-              active: selected === "benefit"
+              active: selected === "benefits"
 
             },
 

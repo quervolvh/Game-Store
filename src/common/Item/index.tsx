@@ -4,13 +4,19 @@ import { cartFunctionType, cartType } from "types";
 import { numberFormat } from "utils";
 import { ItemView } from "./ItemView";
 
-export const Item: React.FC<Props> = ({ item, cartFunctions, cart , extraInfo }) => {
+export const Item: React.FC<Props> = ({ item, cartFunctions, cart, extraInfo }) => {
 
     const [trigger, setTrigger] = useState(0);
 
     const price = item.fixedRecipientDenominations;
 
-    const itemOnCart = cart.find(product => product.productId === (item?.productId || item?.id));
+    const itemOnCart = cart.find(product =>
+
+        product.productId !== undefined ? product.productId === (item?.productId || item?.id) :
+
+            (product.focus === extraInfo.focus && product.index === extraInfo.index)
+
+    );
 
     return (
 
@@ -65,11 +71,11 @@ export const Item: React.FC<Props> = ({ item, cartFunctions, cart , extraInfo })
                         e.stopPropagation();
 
                         cartFunctions?.[itemOnCart ? "removeItemFromCart" : "addToCart"]?.({
-                            
+
                             ...extraInfo,
 
-                            productId : item.productId || item.id,
-                            
+                            productId: item.productId || item.id,
+
                         });
 
                     }}
@@ -98,6 +104,6 @@ interface Props {
 
     cart: cartType,
 
-    extraInfo: { focus : "benefits" | "giftCards" | "eCommerce" , index: number }
+    extraInfo: { focus: "benefits" | "giftCards" | "eCommerce", index: number }
 
 }

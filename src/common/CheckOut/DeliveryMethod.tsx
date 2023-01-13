@@ -1,10 +1,16 @@
 import React, { useEffect, useState } from "react";
-import { Button, CheckMarkEmptyIcon, CheckMarkIcon, CourierDeliveryIcon, ItemTypeToggle, LocationIcon, Modal, SelfDeliveryIcon, ViewFormatter } from "components";
 import { change } from "utils";
+import {
+    Button, CheckMarkEmptyIcon, CheckMarkIcon, CourierDeliveryIcon,
+    ItemTypeToggle, LocationIcon, Modal, SelfDeliveryIcon,
+    ViewFormatter
+} from "components";
 
 export const DeliveryMethod: React.FC<Props> = ({
 
     trigger,
+
+    goToPaymentMethod
 
 }) => {
 
@@ -142,6 +148,8 @@ export const DeliveryMethod: React.FC<Props> = ({
 
         }
 
+        if ( trigger === -12 ) setVisibility(false);
+
     }, [trigger]);
 
     return (
@@ -238,7 +246,7 @@ export const DeliveryMethod: React.FC<Props> = ({
 
                             label="Continue"
 
-                            onClick={() => null}
+                            onClick={() => goToPaymentMethod()}
 
                         />
 
@@ -258,5 +266,7 @@ export const DeliveryMethod: React.FC<Props> = ({
 interface Props {
 
     trigger: number,
+
+    goToPaymentMethod: () => void
 
 }

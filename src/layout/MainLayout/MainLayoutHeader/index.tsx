@@ -24,6 +24,8 @@ export const MainLayoutHeader: React.FC<Props> = ({
 
                 <MainLayoutMobileHeader
                     active={active}
+                    triggerCart={() => triggerCart()}
+                    cart={cart}
                 />
 
                 :

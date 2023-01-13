@@ -1,17 +1,15 @@
 import React, { useEffect, useState } from "react";
-import { Button, FormField, Modal } from "components";
+import { Button, Modal, successIcon } from "components";
 
-export const ContactAddress: React.FC<Props> = ({
+export const Success: React.FC<Props> = ({
 
     trigger,
 
-    goToDeliveryScreen,
+    toggleOut
 
 }) => {
 
     const [visibility, setVisibility] = useState(false);
-
-    const toggleOut = () => setVisibility(false);
 
     useEffect(() => {
 
@@ -41,27 +39,28 @@ export const ContactAddress: React.FC<Props> = ({
 
                 holderClass={"settings-modal-holder"}
 
-                title={"Contact Information"}
+                title={"Payment Processed !"}
 
             >
 
-                <div className="checkout-contact">
+                <div className="checkout-success">
 
-                    <FormField label="Full name" placeHolder={"James Dean"} />
+                    <span className="checkout-success-icon" dangerouslySetInnerHTML={{ __html : successIcon }} />
 
-                    <FormField label="Phone" placeHolder={"+234999110920"} />
+                    <h2> Your order is placed </h2>
 
-                    <FormField label="Email" placeHolder={"james@dean.com"} />
+                    <p> thanks for your order, we hope you enjoyed shopping with us </p>
 
-                    <FormField label="Address" type="text-area" placeHolder={"12, Ascension Descent, Park View, Lagos"} />
-
+                  
                     <div className="checkout-contact-next">
 
                         <Button
 
-                            label="Continue"
+                            label="Done"
 
-                            onClick={() => goToDeliveryScreen()}
+                            className="no-bg"
+
+                            onClick={() => toggleOut()}
 
                         />
 
@@ -82,6 +81,6 @@ interface Props {
 
     trigger: number,
 
-    goToDeliveryScreen: () => void
+    toggleOut: () => void
 
 }

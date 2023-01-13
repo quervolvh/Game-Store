@@ -55,29 +55,37 @@ export const CartBox: React.FC<Props> = ({
                 )
             })}
 
-            <div className="cart-promo">
+            {cart.length > 0 &&
 
-                <h1> promocode </h1>
+                <>
 
-                <div className="cart-promo-box">
+                    <div className="cart-promo">
 
-                    <h2> GAMESTORE </h2>
+                        <h1> promocode </h1>
 
-                    <span dangerouslySetInnerHTML={{ __html: Pin }} />
+                        <div className="cart-promo-box">
 
-                </div>
+                            <h2> GAMESTORE </h2>
+
+                            <span dangerouslySetInnerHTML={{ __html: Pin }} />
+
+                        </div>
 
 
 
-            </div>
+                    </div>
 
-            <div className="cart-totals">
+                    <div className="cart-totals">
 
-                <h1> Total Price ( NGN ) : </h1>
+                        <h1> Total Price ( NGN ) : </h1>
 
-                <h1> {numberFormat(total() || 0)} </h1>
+                        <h1> {numberFormat(total() || 0)} </h1>
 
-            </div>
+                    </div>
+
+                </>
+
+            }
 
         </div>
 

@@ -1,8 +1,8 @@
 import React from 'react';
 import Link from 'next/link';
-import { images } from 'constants/index';
+import { CartIcon } from 'components/Assets';
 
-export const MobileHeaderToggler: React.FC<Props> = ({ setExpansion, isExpanded }): JSX.Element => {
+export const MobileHeaderToggler: React.FC<Props> = ({ setExpansion, isExpanded, cart, triggerCart }): JSX.Element => {
 
     return (
 
@@ -10,9 +10,32 @@ export const MobileHeaderToggler: React.FC<Props> = ({ setExpansion, isExpanded 
 
             <Link href={"/"}>
 
-                <img src={images.lendsqr} alt={"stellas"} />
+                <img src={"/logo/game.png"} alt={"Game store"} />
 
             </Link>
+
+
+            <div className='main-layout-topBar-right-cart' onClick={() => triggerCart()}>
+
+                <span
+
+                    className='main-layout-topBar-right-notifications'
+
+                    dangerouslySetInnerHTML={{ __html: CartIcon }}
+
+                />
+
+                {cart?.length > 0 &&
+
+                    <div className='main-layout-topBar-right-cart-count'>
+
+                        <p> {cart.length} </p>
+
+                    </div>
+
+                }
+
+            </div>
 
             <i
                 className={isExpanded ? "fas fa-times" : "fas fa-bars"}
@@ -21,12 +44,19 @@ export const MobileHeaderToggler: React.FC<Props> = ({ setExpansion, isExpanded 
                 }}
             />
 
+
         </div>
 
     );
 }
 
 interface Props {
+
     setExpansion(e: boolean): void,
-    isExpanded: boolean
+
+    isExpanded: boolean,
+
+    triggerCart: () => void,
+
+    cart: { productId: string, count: number }[]
 }

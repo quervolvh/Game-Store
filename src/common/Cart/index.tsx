@@ -3,6 +3,7 @@ import { Button, Modal } from "components";
 import { cartFunctionType, cartType, productBlock } from "types";
 import { CartBox } from "./CartBox";
 import { CheckOut } from "common/CheckOut";
+import { EmptyHistory } from "components/EmptyHistory";
 
 export const Cart: React.FC<Props> = ({
 
@@ -45,6 +46,8 @@ export const Cart: React.FC<Props> = ({
 
                 cartFunctions={cartFunctions}
 
+                toggleOut={() => toggleOut()}
+
                 cart={cart}
 
             />
@@ -61,27 +64,31 @@ export const Cart: React.FC<Props> = ({
 
                 holderClass={"settings-modal-holder"}
 
-                titleFlexComponent={cart?.length > 0 ?
+                titleFlexComponent={
 
-                    <div className="cart-checkout-component-button">
+                    cart?.length > 0 ?
 
-                        <Button
+                        <div className="cart-checkout-component-button">
 
-                            onClick={() => setCheckOutTrigger((prevState) => prevState + 1)}
+                            <Button
 
-                            label="Check Out"
+                                onClick={() => setCheckOutTrigger((prevState) => prevState + 1)}
 
-                        />
+                                label="Check Out"
 
-                    </div>
+                            />
 
-                    : undefined
+                        </div>
+
+                        : undefined
 
                 }
 
                 title={"Your Cart"}
 
             >
+
+                {cart?.length === 0 && <EmptyHistory subtitle="Nothing to see here yet! Please add an item to cart to continue" />}
 
                 <CartBox
 

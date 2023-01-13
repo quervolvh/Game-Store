@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from "react";
-import { Button, FormField, Modal } from "components";
 import { cartFunctionType, cartType, productBlock } from "types";
 import { ContactAddress } from "./ContactAddress";
 import { DeliveryMethod } from "./DeliveryMethod";
 import { change } from "utils";
+import { PaymentMethod } from "./PaymentMethod";
+import { Success } from "./Success";
 
 export const CheckOut: React.FC<Props> = ({
 
@@ -13,7 +14,9 @@ export const CheckOut: React.FC<Props> = ({
 
     cart,
 
-    cartFunctions
+    cartFunctions,
+
+    toggleOut
 
 }) => {
 
@@ -21,11 +24,25 @@ export const CheckOut: React.FC<Props> = ({
 
         address: 0,
 
-        deliveryMethod: 0
+        deliveryMethod: 0,
+
+        paymentMethod: 0,
+
+        success: 0
 
     });
 
-    const toggleOut = () => setVisibility(false);
+    const closeAllViews = () => setViewTriggers({
+
+        address: -12,
+
+        deliveryMethod: -12,
+
+        paymentMethod: -12,
+
+        success: -12
+
+    });
 
     useEffect(() => {
 
@@ -45,19 +62,38 @@ export const CheckOut: React.FC<Props> = ({
 
                 trigger={viewTriggers.address}
 
-                products={products}
-
-                cart={cart}
-
-                cartFunctions={cartFunctions}
-
-                goToDeliveryScreen={()=> change(viewTriggers.deliveryMethod + 1 , "deliveryMethod" , setViewTriggers )}
+                goToDeliveryScreen={() => change(viewTriggers.deliveryMethod + 1, "deliveryMethod", setViewTriggers)}
 
             />
 
             <DeliveryMethod
 
                 trigger={viewTriggers.deliveryMethod}
+
+                goToPaymentMethod={() => change(viewTriggers.paymentMethod + 1, "paymentMethod", setViewTriggers)}
+
+            />
+
+            <PaymentMethod
+
+                trigger={viewTriggers.paymentMethod}
+
+                goToPaymentSuccess={() => change(viewTriggers.success + 1, "success", setViewTriggers)}
+
+
+            />
+
+            <Success
+
+                trigger={viewTriggers.success}
+
+                toggleOut={() => {
+                    
+                    toggleOut();
+
+                    closeAllViews();
+                
+                }}
 
             />
 
@@ -76,6 +112,8 @@ interface Props {
 
     cart: cartType,
 
-    cartFunctions: cartFunctionType
+    cartFunctions: cartFunctionType,
+
+    toggleOut: () => void
 
 }

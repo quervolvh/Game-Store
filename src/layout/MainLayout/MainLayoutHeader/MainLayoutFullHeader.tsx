@@ -13,7 +13,7 @@ export const MainLayoutFullHeader: React.FC<Props> = ({ cart , triggerCart }) =>
 
           <LinkWrapper link='/'>
 
-            <img src={"/logo/game.png"} alt={"chimoney"} />
+            <img src={"/logo/game.png"} alt={"Game store"} />
 
           </LinkWrapper>
 

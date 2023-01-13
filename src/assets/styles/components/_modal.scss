@@ -21,15 +21,42 @@
   background: color(background);
 
   &.large {
+
+    @media only screen and (max-width: 949px) {
+
+      width: 100% !important;
+      max-width: 100% !important;
+
+    }
+
+    padding-left: 0;
+    padding-right: 0;
     width: 950px !important;
     max-width: 950px !important;
 
     .modal-legend {
 
+      @media only screen and (max-width: 1400px) {
+        padding-left: 32px;
+        padding-right: 32px;
+      }
+    
+      @include media-query(mobile) {
+        padding-left: 20px;
+        padding-right: 20px;
+      }
+
+      position: sticky;
+      top: 0;
+      padding-right: 32px;
+      padding-left: 32px;
+      background: color(background);
       text-align: left;
 
       p {
 
+        padding-top: 10px;
+        padding-bottom: 10px;
         @include font-size-override(x-large);
 
       }

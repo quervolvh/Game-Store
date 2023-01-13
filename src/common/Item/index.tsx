@@ -1,62 +1,38 @@
-import { AddToCart, Modal } from "components";
+import { AddToCart, RemoveFromCartIcon } from "components";
 import React, { useState } from "react";
+import { cartFunctionType, cartType } from "types";
 import { numberFormat } from "utils";
+import { ItemView } from "./ItemView";
 
-export const Item: React.FC<{ item?: { [key: string]: any } }> = ({ item }) => {
+export const Item: React.FC<Props> = ({ item, cartFunctions, cart }) => {
 
-    const [visibility, setVisibility] = useState(false);
+    const [trigger, setTrigger] = useState(0);
 
     const price = item.fixedRecipientDenominations;
+
+    const itemOnCart = cart.find(product => product.productId === (item?.productId || item?.id));
 
     return (
 
         <>
 
-            <Modal
+            <ItemView
 
-                title={"Add to Cart"}
+                item={item}
 
-                visibility={visibility}
+                trigger={trigger}
 
-                legendClass={"modal-legend-bold"}
+                cartFunctions={cartFunctions}
 
-                class={`modal-default-alignment`}
+                itemOnCart={itemOnCart}
 
-                holderClass={"settings-modal-holder"}
-
-                toggleOut={() => setVisibility(false)}
-
-                subtitle={item.productName || item?.name}
-
-            >
-
-                <div className="item-modal-cart">
-
-                    <img
-
-                        src={item?.img || item?.thumbnail}
-
-                        alt={item?.productName || item?.name}
-
-                    />
-
-                </div>
-
-                <div className="cart-quantifier">
-
-                    <div className="cart-quantifier-button"> + </div>
-
-                    <div className="cart-quantifier-quantity"> Qty: 1 </div>
-
-                    <div className="cart-quantifier-button"> - </div>
-
-                </div>
-
-            </Modal>
+            />
 
             <div
 
                 className="item"
+
+                onClick={() => setTrigger((prevState) => (prevState + 1))}
 
             >
 
@@ -76,17 +52,25 @@ export const Item: React.FC<{ item?: { [key: string]: any } }> = ({ item }) => {
 
                 </p>
 
-                <div 
-                
+                <div
+
                     className="item-add-to-cart"
-                    
-                    onClick={() => setVisibility(true)}
 
-                    >
+                    onClick={(e) => {
 
-                    <span dangerouslySetInnerHTML={{ __html: AddToCart }} />
+                        e.preventDefault();
 
-                    <p > Add To Cart </p>
+                        e.stopPropagation();
+
+                        cartFunctions?.[itemOnCart ? "removeItemFromCart" : "addToCart"]?.(item.productId || item.id);
+
+                    }}
+
+                >
+
+                    <span dangerouslySetInnerHTML={{ __html: itemOnCart ? RemoveFromCartIcon : AddToCart }} />
+
+                    <p> {itemOnCart ? "Remove Item" : "Add To Cart"} </p>
 
                 </div>
 
@@ -95,5 +79,15 @@ export const Item: React.FC<{ item?: { [key: string]: any } }> = ({ item }) => {
         </>
 
     )
+
+}
+
+interface Props {
+
+    item: { [key: string]: any },
+
+    cartFunctions: cartFunctionType,
+
+    cart: cartType
 
 }

@@ -16,6 +16,30 @@ export default function App({ Component, pageProps }: AppProps) {
 
   const { isMobile, deviceWidth, showMobileView, clientMode } = state;
 
+  const [cart, setCart] = useState<{ productId: string, count: number }[]>([]);
+
+  const cartFunctions = {
+
+    addToCart: (productId: string) => setCart((prevState) => ([...prevState, { productId, count: 1 }])),
+
+    removeItemFromCart: (productId: string) => setCart((prevState) => prevState.filter(item => item.productId !== productId)),
+
+    modifyCartItem: (productId: string, action: "increment" | "decrement") => {
+
+      const items = [...cart].map(item => (item.productId === productId) ?
+
+        { ...item, count: item.count + (action === "increment" ? 1 : -1) }
+
+        : item
+
+      );
+
+      setCart(items);
+
+    }
+
+  };
+
   const resizeListener = (mode: "add" | "remove") => {
 
     window?.[mode === "add" ? "addEventListener" : "removeEventListener"]?.("resize",
@@ -58,9 +82,9 @@ export default function App({ Component, pageProps }: AppProps) {
   }, [clientMode]);
 
   useEffect(() => {
-    
+
     change(isMobile, "showMobileView", setState);
-  
+
   }, [isMobile]);
 
   useEffect(() => {
@@ -97,6 +121,10 @@ export default function App({ Component, pageProps }: AppProps) {
       deviceWidth={deviceWidth}
 
       clientMode={clientMode}
+
+      cartFunctions={cartFunctions}
+
+      cart={cart}
 
       {...pageProps}
 

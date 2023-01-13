@@ -12,6 +12,7 @@
 //4. Transition
 @import 'transitions/fadeIn';
 @import 'transitions/content-loader';
+@import 'transitions/rebound';
 
 //6. Vendors
 @import "vendors/lite-picker";
@@ -19,6 +20,7 @@
 //5. Components
 @import "components/banner";
 @import "components/button";
+@import "components/cart";
 @import "components/component-filter";
 @import "components/component-header";
 @import "components/empty-history";

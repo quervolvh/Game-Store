@@ -172,12 +172,39 @@
 
       &-notifications {
 
+        position: relative;
         display: block;
         margin-right: 10px;
         margin-left: 10px;
   
       }
       
+      &-cart {
+
+        position: relative;
+
+        &-count {
+
+          display: flex;
+          position: absolute;
+          top: -6px;
+          right: 1px;
+          align-self: center;
+          justify-content: center;
+          border-radius: 100%;
+          padding: 2px 6px;
+          background: color(clear-white);
+    
+          p {
+            
+            @include font-size-override(xx-small);
+            color: color(primary);
+    
+          }
+
+        }
+  
+      }
 
     }
 

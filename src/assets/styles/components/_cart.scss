@@ -1,0 +1,32 @@
+.cart {
+
+    &-quantifier {
+
+        display: flex;
+        justify-content: space-between;
+        border-radius: 8px;
+        border: 2px solid color(clear-white);
+        
+        &-button {
+
+            display: flex;
+            flex-grow: 1;
+            justify-content: center;
+            padding: 30px 20px;
+
+        }
+
+        &-quantity {
+
+            border-right: 2px solid white;
+            border-left: 2px solid white;
+            padding: 30px 20px;
+            text-align: center;
+            width: 60%;
+
+        }
+
+        
+    }
+
+}

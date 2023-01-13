@@ -5,7 +5,7 @@ import { MainLayoutLegend } from './MainLayoutLegend';
 import { MetaHead, ComponentBackButton } from 'components';
 import { classnames } from 'utils';
 
-export const MainLayout: React.FC<Props> = ({ title, active, contentClass, isMobile, deviceWidth, ...props }) => {
+export const MainLayout: React.FC<Props> = ({ title, active, contentClass, isMobile, deviceWidth, cart, ...props }) => {
 
   const smallerContentPadding = (props.lesserContentPadding || props.popClick || props.popLink) ? true : false;
 
@@ -25,6 +25,7 @@ export const MainLayout: React.FC<Props> = ({ title, active, contentClass, isMob
             deviceWidth={deviceWidth}
             active={active || ""}
             title={props.displayTitle}
+            cart={cart}
           />
 
           <div className={
@@ -81,5 +82,6 @@ interface Props {
   popClick?: () => void,
   lesserContentPadding?: boolean,
   children: React.ReactElement,
-  popReference?: string
+  popReference?: string,
+  cart?: { productId: string , count: number }[]
 }

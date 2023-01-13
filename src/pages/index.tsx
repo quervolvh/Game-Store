@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { MainLayout } from "layout/MainLayout";
 import { useFetching } from "hooks/useFetching";
-import { itemBlock } from "types";
+import { cartFunctionType, itemBlock } from "types";
 import { Banner } from "common/Banner";
 import { ViewToggle } from "common/ViewToggle";
 import { ItemsPlaceHolder } from "common/Item/PlaceHolder";
@@ -9,7 +9,7 @@ import { Item } from "common/Item";
 import { Pagination } from "components";
 import { change } from "utils";
 
-export const Customers: React.FC<Props> = ({ isMobile, deviceWidth }) => {
+export const Customers: React.FC<Props> = ({ isMobile, deviceWidth, cartFunctions, cart }) => {
 
   const [state, setState] = useState<{
 
@@ -104,6 +104,7 @@ export const Customers: React.FC<Props> = ({ isMobile, deviceWidth }) => {
       isMobile={isMobile}
       deviceWidth={deviceWidth}
       active={""}
+      cart={cart}
     >
 
       <>
@@ -140,9 +141,21 @@ export const Customers: React.FC<Props> = ({ isMobile, deviceWidth }) => {
 
             return false;
 
-          }
+          })?.map((item, index) =>
 
-          )?.map((item) => <Item item={item} />)}
+            <Item
+
+              item={item}
+
+              cart={cart}
+
+              cartFunctions={cartFunctions}
+
+              key={`cart-item-${item.productId}-${index} `}
+
+            />
+
+          )}
 
         </div>
 
@@ -176,7 +189,7 @@ export const Customers: React.FC<Props> = ({ isMobile, deviceWidth }) => {
 
           empty={focusMatcher(state.focus)?.length === 0}
 
-        perPage={20}
+          perPage={20}
 
 
         />
@@ -195,6 +208,8 @@ interface Props {
 
   isMobile: boolean,
 
-  deviceWidth: number
+  deviceWidth: number,
+
+  cartFunctions: cartFunctionType
 
 }

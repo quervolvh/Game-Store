@@ -2,7 +2,7 @@ import React from 'react';
 import { CartIcon, LinkWrapper, NotificationsIcon } from 'components';
 import { MainLayoutHeaderSearch } from './ManLayoutHeaderSearch';
 
-export const MainLayoutFullHeader: React.FC<Props> = ({}) => {
+export const MainLayoutFullHeader: React.FC<Props> = ({ cart }) => {
 
   return (
     <div className="main-layout-full-header main-layout-topBar">
@@ -33,13 +33,27 @@ export const MainLayoutFullHeader: React.FC<Props> = ({}) => {
 
         />
 
-        <span
+        <div className='main-layout-topBar-right-cart'>
 
-          className='main-layout-topBar-right-notifications'
+          <span
 
-          dangerouslySetInnerHTML={{ __html: CartIcon }}
+            className='main-layout-topBar-right-notifications'
 
-        />
+            dangerouslySetInnerHTML={{ __html: CartIcon }}
+
+          />
+
+          {cart?.length > 0 &&
+
+            <div className='main-layout-topBar-right-cart-count'>
+
+              <p> {cart.length} </p>
+
+            </div>
+
+          }
+
+        </div>
 
       </div>
 
@@ -52,5 +66,6 @@ export const MainLayoutFullHeader: React.FC<Props> = ({}) => {
 
 interface Props {
   avatar?: string,
-  title?: string
+  title?: string,
+  cart: { productId: string, count: number }[]
 }

@@ -27,6 +27,9 @@ Performance Improvement:
 - Pagination has already been implemented here so, it won't be necessary.
 - Addition of **productid** to benefits - list ( from backend / data-store ) to ensure each item is unique and can be referenced properly on the cart.
 
+## Best time to test
+- App is used best when giftCards data are available from the API. :)
+
 ## To Get Started Locally
 
 Run the development server:

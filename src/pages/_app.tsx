@@ -5,6 +5,8 @@ import type { AppProps } from 'next/app';
 import { SetClientAvailability } from 'hooks/useIsClient';
 import { productBlock } from 'types';
 import { Cart } from 'common/Cart';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 export default function App({ Component, pageProps }: AppProps) {
 
@@ -39,6 +41,14 @@ export default function App({ Component, pageProps }: AppProps) {
   const cartFunctions = {
 
     addToCart: (e: { productId: string, focus: "eCommerce" | "giftCards" | "benefits", index: number }) => {
+
+      if (!e?.productId) {
+
+        toast("Cannot add this item to cart, Item has no reference ( i.e productID )");
+
+        return;
+
+      }
 
       const newEntry = { productId: e.productId, count: 1, index: e.index, focus: e.focus };
 
@@ -155,7 +165,7 @@ export default function App({ Component, pageProps }: AppProps) {
 
       const currentStoreItem = localStorage.getItem(`cart-man`)
 
-      if (currentStoreItem ) {
+      if (currentStoreItem) {
 
         const item = JSON?.parse?.(currentStoreItem);
 
@@ -182,6 +192,8 @@ export default function App({ Component, pageProps }: AppProps) {
   return (
 
     <>
+
+      <ToastContainer />
 
       <Cart
 

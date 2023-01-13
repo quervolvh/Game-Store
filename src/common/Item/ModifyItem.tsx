@@ -36,13 +36,13 @@ export const ModifyItem: React.FC<Props> = ({
 
                                 if (itemOnCart.count === 1) {
 
-                                    cartFunctions.removeItemFromCart(item.productId || item.id);
+                                    cartFunctions.removeItemFromCart({ productId : item.productId || item.id});
 
                                     return;
 
                                 }
 
-                                cartFunctions.modifyCartItem((item.productId || item.id), "decrement")
+                                cartFunctions.modifyCartItem( item.productId || item.id, "decrement")
 
                             }}
 

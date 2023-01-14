@@ -23,7 +23,7 @@ export const CartItem: React.FC<Props> = ({
 
                 <div className="cart-item-image">
 
-                    <img src={product?.img} />
+                    <img src={product?.img || product?.thumbnail} />
 
                 </div>
 
